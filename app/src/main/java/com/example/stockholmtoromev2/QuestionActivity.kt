@@ -2,19 +2,10 @@ package com.example.stockholmtoromev2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.TextView
 
-class MainActivity : AppCompatActivity() {
-
-
-
+class QuestionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-
-
-
+        setContentView(R.layout.activity_question)
     }
 }
