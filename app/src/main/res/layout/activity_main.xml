@@ -5,4 +5,66 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#7290ED"
-    tools:context=".MainActivity"/>
+
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/flagIv"
+        android:layout_width="411dp"
+        android:layout_height="238dp"
+        android:background="#7290ED"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/stockholm" />
+
+    <TextView
+        android:id="@+id/questionTv"
+        android:layout_width="357dp"
+        android:layout_height="191dp"
+        android:layout_marginTop="16dp"
+        android:background="#4C8CD8"
+        android:elevation="40dp"
+        android:fontFamily="serif"
+        android:gravity="center"
+        android:text="In this travelquiz you’re going from stockholm to rome. Each stop on the way to Rome, there will be a specific question for that location. To travel along you have to guess the right answer. If you guess the wrong answer you will be brought back to Stockholm. "
+        android:textColor="#212121"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/startButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flagIv"
+        app:layout_constraintVertical_bias="0.071" />
+
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="277dp"
+        android:layout_height="98dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginBottom="132dp"
+        android:backgroundTint="#274EBD"
+        android:text="press to Start the journey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="286dp"
+        android:layout_height="78dp"
+        android:clickable="false"
+        android:elevation="50dp"
+        android:ellipsize="none"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center"
+        android:text="STOCKHOLM TO ROME"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/flagIv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/flagIv"
+        app:layout_constraintVertical_bias="0.393" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
