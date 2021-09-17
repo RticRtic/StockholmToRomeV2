@@ -15,7 +15,7 @@ class QuestionActivity : AppCompatActivity() {
     lateinit var userButton1: Button
     lateinit var userButton2: Button
     lateinit var UserButton3: Button
-    lateinit var UserHandle4: Button
+    lateinit var UserButton4: Button
 
 
     var diffrentQuestions = QuestionsList()
@@ -25,7 +25,7 @@ class QuestionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
-
+git
         userSeeFlagView = findViewById(R.id.flaglv)
 
 
