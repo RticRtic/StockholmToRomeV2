@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#7290ED"
+
     tools:context=".MainActivity">
 
     <ImageView
@@ -66,3 +67,4 @@
         app:layout_constraintVertical_bias="0.393" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
