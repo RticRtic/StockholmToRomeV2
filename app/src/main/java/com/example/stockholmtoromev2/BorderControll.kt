@@ -10,7 +10,7 @@ class QuestionsListBorderControll() {
     var listOfQuestionsBC: MutableList<BorderControll> = mutableListOf()
 
     init {
-        val denmarkBC = BorderControll(R.drawable.stop_sign1, "The danish people like beer, what is the beer consumption pp/year?", listOf("45l", "60l", "30l", "80l"), 3)
+        val denmarkBC = BorderControll(R.drawable.stop_sign1, "The danish people like beer, what is the beer consumption pp/year?", listOf("45l", "60l", "30l", "80l"), 2)
 
 
         val germanyBC = BorderControll(R.drawable.stop_sign1, "Germany are famous for their carindustry, what brand is not from Germany?", listOf("Audi", "Porsche", "Fiat", "Volkswagen"),3)
