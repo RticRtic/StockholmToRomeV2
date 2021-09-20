@@ -18,10 +18,14 @@ class QuestionActivity : AppCompatActivity() {
     var userPressAnswer: Int = 0
 
 
+
+
     var diffrentQuestions = QuestionsList()
 
     var currentQuestionIndex = 0
+
     var q: Destination = diffrentQuestions.listOfQuestions[currentQuestionIndex]
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +40,10 @@ class QuestionActivity : AppCompatActivity() {
             userPressAnswer = 1
             checkIfCorrectAnswer()
 
+
+
+
+   
 
         }
         userButton2 = findViewById(R.id.button2)
@@ -69,6 +77,9 @@ class QuestionActivity : AppCompatActivity() {
 
 
         q = diffrentQuestions.listOfQuestions[currentQuestionIndex]
+
+    
+
         userSeeFlagView.setImageResource(q.image)
         userSeeQuestionView.setText(q.question)
         userButton1.setText(q.answer[0])
@@ -78,6 +89,7 @@ class QuestionActivity : AppCompatActivity() {
 
 
     }
+
 
     fun checkIfCorrectAnswer() {
         if (q.correctAnswer == userPressAnswer) {
@@ -98,10 +110,15 @@ class QuestionActivity : AppCompatActivity() {
             }
         }
 
+    
+
+
 
     }
 
-
+    fun borderControllQ(){
+        Log.d("!!!","Wrong answer" )
+    }
 
 
 
