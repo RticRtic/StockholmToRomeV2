@@ -15,15 +15,11 @@ class QuestionActivity : AppCompatActivity() {
     lateinit var userButton2: Button
     lateinit var userButton3: Button
     lateinit var userButton4: Button
-    var userPressAnswer: Int = 0
-
-
 
 
     var diffrentQuestions = QuestionsList()
-
+    var userPressAnswer: Int = 0
     var currentQuestionIndex = 0
-
     var q: Destination = diffrentQuestions.listOfQuestions[currentQuestionIndex]
 
 
@@ -40,10 +36,6 @@ class QuestionActivity : AppCompatActivity() {
             userPressAnswer = 1
             checkIfCorrectAnswer()
 
-
-
-
-   
 
         }
         userButton2 = findViewById(R.id.button2)
@@ -73,12 +65,7 @@ class QuestionActivity : AppCompatActivity() {
 
 
     fun setQuestion() {
-
-
-
         q = diffrentQuestions.listOfQuestions[currentQuestionIndex]
-
-    
 
         userSeeFlagView.setImageResource(q.image)
         userSeeQuestionView.setText(q.question)

@@ -31,17 +31,24 @@ class QuestionsList() {
                                         listOf("Knorr","Breitling","Birkenstock","Lindt"),
                                         3)
 
-        val Italy = Destination(        "Italy",
+        val italy = Destination(        "Italy",
                                         R.drawable.italy_flag,
-                                        "What is the most popular food in Italy?",
-                                        listOf("Rice","Pasta","Potatoes","Ramen"),
+                                        "What is the name of the Italian primeminister",
+                                        listOf("Giuseppe Conte","Paolo Gentiloni","Mario Draghi","Silvio Berlusconi"),
+                                        3)
+
+        val rome = Destination(         "Rome",
+                                        R.drawable.rome,
+                                        "Witch of theese Italian dishes are from Rome?",
+                                        listOf("Lasagna","Carbonara","Pasta alfredo","Tettrazini"),
                                         2)
 
 
         listOfQuestions.add(denmark)
         listOfQuestions.add(germnay)
         listOfQuestions.add(switzerland)
-        listOfQuestions.add(Italy)
+        listOfQuestions.add(italy)
+        listOfQuestions.add(rome)
 
 
 

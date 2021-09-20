@@ -10,8 +10,9 @@
 
     <ImageView
         android:id="@+id/flagIv"
-        android:layout_width="411dp"
-        android:layout_height="238dp"
+        android:layout_width="match_parent"
+        android:layout_height="253dp"
+        android:layout_marginTop="4dp"
         android:background="#7290ED"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -41,15 +42,15 @@
         android:id="@+id/startButton"
         android:layout_width="277dp"
         android:layout_height="98dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginBottom="132dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="#274EBD"
         android:text="press to Start the journey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/userSeeGameNameTv"
         android:layout_width="286dp"
         android:layout_height="78dp"
         android:clickable="false"
@@ -64,7 +65,22 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/flagIv"
-        app:layout_constraintVertical_bias="0.393" />
+        app:layout_constraintVertical_bias="0.171" />
+
+    <EditText
+        android:id="@+id/userTypeNameEt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/startButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionTv"
+        app:layout_constraintVertical_bias="0.42" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
