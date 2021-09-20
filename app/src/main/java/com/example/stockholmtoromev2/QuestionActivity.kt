@@ -27,6 +27,7 @@ class QuestionActivity : AppCompatActivity() {
     var bC: BorderControll = borderControlQuestions.listOfQuestionsBC[currentQuestionsIndexBc]
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
