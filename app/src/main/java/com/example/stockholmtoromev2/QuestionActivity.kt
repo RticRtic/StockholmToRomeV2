@@ -28,8 +28,6 @@ class QuestionActivity : AppCompatActivity() {
     var bC: BorderControll = borderControlQuestions.listOfQuestionsBC[currentQuestionsIndexBc]
 
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
@@ -96,6 +94,7 @@ class QuestionActivity : AppCompatActivity() {
         userButton4.setText(bC.answer[3])
 
     }
+
     fun checkIfCorrectAnswer() {
         if (q.correctAnswer == userPressAnswer) {
             currentQuestionIndex++
@@ -103,8 +102,9 @@ class QuestionActivity : AppCompatActivity() {
 
 
 
-            if (currentQuestionIndex <= diffrentQuestions.listOfQuestions.size ) {
+            if (currentQuestionIndex <= diffrentQuestions.listOfQuestions.size) {
                 setQuestion()
+
             }
 
 
@@ -113,13 +113,12 @@ class QuestionActivity : AppCompatActivity() {
         }
 
 
-
     }
+
     fun questionType() {
-        if(isBorderQuestion == false) {
+        if (isBorderQuestion == false) {
             checkIfCorrectAnswer()
-        }
-        else {
+        } else {
             checkBorderControlQuestions()
         }
 
@@ -132,19 +131,18 @@ class QuestionActivity : AppCompatActivity() {
             currentQuestionsIndexBc++
 
 
-            if(currentQuestionsIndexBc <= borderControlQuestions.listOfQuestionsBC.size) {
+            if (currentQuestionsIndexBc <= borderControlQuestions.listOfQuestionsBC.size) {
                 setQuestion()
             }
 
 
-        } else{
+        } else {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
 
         }
 
     }
-
 
 
 }
