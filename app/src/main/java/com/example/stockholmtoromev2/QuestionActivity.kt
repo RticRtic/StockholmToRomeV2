@@ -32,6 +32,8 @@ class QuestionActivity : AppCompatActivity() {
     var lC: LastChance = lastChanceQuestions.listOfQuestionslC[currenQuestionsIndexLc]
 
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
@@ -98,7 +100,6 @@ class QuestionActivity : AppCompatActivity() {
         userButton4.setText(bC.answer[3])
 
     }
-
     fun setLastChanceQuestion() {
         isLastChanceQuestions = false
         lC = lastChanceQuestions.listOfQuestionslC[currentQuestionIndex]
@@ -110,15 +111,35 @@ class QuestionActivity : AppCompatActivity() {
         userButton4.setText(lC.answer[3])
     }
 
+    fun checkIfCorrectAnswer() {
+        if (q.correctAnswer == userPressAnswer) {
+            currentQuestionIndex++
+            currentQuestionsIndexBc++
+            currenQuestionsIndexLc++
+
+
+
+            if (currentQuestionIndex <= diffrentQuestions.listOfQuestions.size ) {
+                setQuestion()
+            }
+
+
+        } else {
+            setBorderControlQuestion()
+        }
 
     }
+    fun checkBorderControlQuestions() {
+        if (bC.correctAnswer == userPressAnswer) {
+            currentQuestionIndex++
+            currentQuestionsIndexBc++
+            currenQuestionsIndexLc++
 
-    fun questionType() {
-        if (isBorderQuestion == false) {
-            checkIfCorrectAnswer()
-        } else {
-            checkBorderControlQuestions()
-        }
+
+            if(currentQuestionsIndexBc <= borderControlQuestions.listOfQuestionsBC.size) {
+                setQuestion()
+            }
+
 
         } else{
             setLastChanceQuestion()
@@ -139,11 +160,36 @@ class QuestionActivity : AppCompatActivity() {
 
         }
         else {
-
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }
- 
+
+
+
+    fun questionType() {
+        if(isBorderQuestion == false) {
+            checkIfCorrectAnswer()
+
+        }
+        else if(isBorderQuestion == true) {
+            checkBorderControlQuestions()
+            if(isLastChanceQuestions == false) {
+                checkLastChanceQuestions()
+
+            }
+            else {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+
+        }
+
+
+
+    }
+
+
+
 }
 
