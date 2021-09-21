@@ -24,22 +24,24 @@
 
     <ImageView
         android:id="@+id/flaglv"
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:layout_marginBottom="48dp"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="24dp"
         android:background="#7290ED"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/danmark_flagga" />
+        app:srcCompat="@drawable/denmarkflag" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="340dp"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="312dp"
         android:background="#4C8CD8"
@@ -49,7 +51,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.431"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flaglv" />
 
     <Button
         android:id="@+id/button1"
