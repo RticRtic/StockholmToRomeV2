@@ -50,8 +50,6 @@ class QuestionsList() {
         listOfQuestions.add(italy)
         listOfQuestions.add(rome)
 
-
-
     }
 
 
