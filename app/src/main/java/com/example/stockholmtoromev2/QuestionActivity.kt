@@ -1,5 +1,6 @@
 package com.example.stockholmtoromev2
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.UserHandle
@@ -122,9 +123,24 @@ class QuestionActivity : AppCompatActivity() {
     }
 
     fun checkBorderControlQuestions() {
-        if(bC.correctAnswer == userPressAnswerBc ) {
+        if (bC.correctAnswer == userPressAnswer) {
+            currentQuestionIndex++
             currentQuestionsIndexBc++
 
+            when {
+                currentQuestionsIndexBc <= borderControlQuestions.listOfQuestionsBC.size ->
+                    setBorderControlQuestion()
+            }
+
+
+        } else {
+            val question = borderControlQuestions.listOfQuestionsBC.get(currentQuestionsIndexBc)
+            if (question.correctAnswer != userPressAnswer) {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+
+
+            }
         }
 
     }
