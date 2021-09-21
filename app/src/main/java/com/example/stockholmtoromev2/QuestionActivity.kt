@@ -40,7 +40,9 @@ class QuestionActivity : AppCompatActivity() {
         userButton1 = findViewById(R.id.button1)
         userButton1.setOnClickListener {
             userPressAnswer = 1
+
             questionType()
+
 
 
 
@@ -48,7 +50,9 @@ class QuestionActivity : AppCompatActivity() {
         userButton2 = findViewById(R.id.button2)
         userButton2.setOnClickListener {
             userPressAnswer = 2
+
             questionType()
+
 
 
 
@@ -57,7 +61,9 @@ class QuestionActivity : AppCompatActivity() {
         userButton3 = findViewById(R.id.button3)
         userButton3.setOnClickListener {
             userPressAnswer = 3
+
             questionType()
+
 
 
 
@@ -66,7 +72,9 @@ class QuestionActivity : AppCompatActivity() {
         userButton4 = findViewById(R.id.button4)
         userButton4.setOnClickListener {
             userPressAnswer = 4
+
             questionType()
+
 
 
 
@@ -109,7 +117,7 @@ class QuestionActivity : AppCompatActivity() {
     fun checkIfCorrectAnswer() {
         if (q.correctAnswer == userPressAnswer) {
             currentQuestionIndex++
-            currentQuestionsIndexBc++
+
 
 
             if (currentQuestionIndex <= diffrentQuestions.listOfQuestions.size ) {
@@ -118,7 +126,7 @@ class QuestionActivity : AppCompatActivity() {
 
 
         } else {
-            setBorderControlQuestion()
+
         }
 
 
@@ -132,12 +140,15 @@ class QuestionActivity : AppCompatActivity() {
             checkBorderControlQuestions()
         }
 
+
     }
 
     fun checkBorderControlQuestions() {
+
         if (bC.correctAnswer == userPressAnswer) {
-            currentQuestionIndex++
-            currentQuestionsIndexBc++
+
+
+
 
             if(currentQuestionsIndexBc <= borderControlQuestions.listOfQuestionsBC.size) {
                 setQuestion()
@@ -149,6 +160,7 @@ class QuestionActivity : AppCompatActivity() {
         } else{
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+
         }
 
     }
@@ -156,3 +168,4 @@ class QuestionActivity : AppCompatActivity() {
 
 
 }
+
