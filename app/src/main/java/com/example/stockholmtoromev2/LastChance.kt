@@ -9,17 +9,17 @@ class LastChance(
 }
 
 class LastChanceQuestionsList() {
-    var listOfQuestions: MutableList<Destination> = mutableListOf()
+    var listOfQuestionslC: MutableList<LastChance> = mutableListOf()
 
     init {
-        val denmark = Destination(
+        val denmark = LastChance(
             "Denmark",
             R.drawable.stop_sign1,
             "What is the national dish in Denmark?",
             listOf("Fried pork with parsleysause","Meatballs","Deepfried Fish","Fermented cabbage"),
             1)
 
-        val germany = Destination(
+        val germany = LastChance(
             "Germany",
             R.drawable.stop_sign1,
             "What of the following political parties are not from Germany?",
@@ -27,7 +27,7 @@ class LastChanceQuestionsList() {
             2
         )
 
-        val switzerland = Destination(
+        val switzerland = LastChance(
             "Switzerland",
             R.drawable.stop_sign1,
             "What cheese do not come fron Switzerland?",
@@ -35,19 +35,18 @@ class LastChanceQuestionsList() {
             4
         )
 
-        val italy = Destination(
+        val italy = LastChance(
             "Italy",
             R.drawable.stop_sign1,
             "What is the nickname of the Italian footballteam?",
             listOf("gli Azzurri","Forza Fratelli","Nerazzurri","Blucerchiati"),
             1
         )
-        listOfQuestions.add(denmark)
-        listOfQuestions.add(germany)
-        listOfQuestions.add(switzerland)
-        listOfQuestions.add(italy)
-
-
+        listOfQuestionslC.add(denmark)
+        listOfQuestionslC.add(germany)
+        listOfQuestionslC.add(switzerland)
+        listOfQuestionslC.add(italy)
     }
+
 
 }
