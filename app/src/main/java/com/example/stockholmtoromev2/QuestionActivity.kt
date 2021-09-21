@@ -23,9 +23,9 @@ class QuestionActivity : AppCompatActivity() {
     var userPressAnswer: Int = 0
     var userPressAnswerBc: Int = 0
     var currentQuestionIndex = 0
-    var currentQuestionIndexBc = 0
+    var currentQuestionsIndexBc = 0
     var q: Destination = diffrentQuestions.listOfQuestions[currentQuestionIndex]
-    var bC: BorderControll = borderControlQuestions.listOfQuestionsBC[currentQuestionIndexBc]
+    var bC: BorderControll = borderControlQuestions.listOfQuestionsBC[currentQuestionsIndexBc]
 
 
 
@@ -39,10 +39,7 @@ class QuestionActivity : AppCompatActivity() {
         userButton1 = findViewById(R.id.button1)
         userButton1.setOnClickListener {
             userPressAnswer = 1
-            setQuestion()
             checkIfCorrectAnswer()
-            userPressAnswerBc = 1
-            setBorderControlQuestion()
             checkBorderControlQuestions()
 
 
@@ -50,20 +47,14 @@ class QuestionActivity : AppCompatActivity() {
         userButton2 = findViewById(R.id.button2)
         userButton2.setOnClickListener {
             userPressAnswer = 2
-            setQuestion()
             checkIfCorrectAnswer()
-            userPressAnswerBc = 2
-            setBorderControlQuestion()
             checkBorderControlQuestions()
 
         }
         userButton3 = findViewById(R.id.button3)
         userButton3.setOnClickListener {
             userPressAnswer = 3
-            setQuestion()
             checkIfCorrectAnswer()
-            userPressAnswerBc = 3
-            setBorderControlQuestion()
             checkBorderControlQuestions()
 
 
@@ -71,19 +62,15 @@ class QuestionActivity : AppCompatActivity() {
         userButton4 = findViewById(R.id.button4)
         userButton4.setOnClickListener {
             userPressAnswer = 4
-            setQuestion()
             checkIfCorrectAnswer()
-            userPressAnswerBc = 4
-            setBorderControlQuestion()
             checkBorderControlQuestions()
 
         }
 
 
-
-
-
         setQuestion()
+
+
     }
 
 
@@ -103,8 +90,8 @@ class QuestionActivity : AppCompatActivity() {
 
     fun checkIfCorrectAnswer() {
         if (q.correctAnswer == userPressAnswer) {
-            currentQuestionIndex ++
-            currentQuestionIndexBc ++
+            currentQuestionIndex++
+            currentQuestionsIndexBc++
 
             when {
                 currentQuestionIndex <= diffrentQuestions.listOfQuestions.size ->
@@ -112,19 +99,20 @@ class QuestionActivity : AppCompatActivity() {
             }
 
 
-
         } else {
-            setBorderControlQuestion()
+            val question = diffrentQuestions.listOfQuestions.get(currentQuestionIndex)
+            if (question.correctAnswer != userPressAnswer) {
+               setBorderControlQuestion()
 
 
-
+            }
         }
 
 
     }
 
     fun setBorderControlQuestion() {
-        bC = borderControlQuestions.listOfQuestionsBC[currentQuestionIndexBc]
+    bC = borderControlQuestions.listOfQuestionsBC[currentQuestionsIndexBc]
         userSeeFlagView.setImageResource(bC.image)
         userSeeQuestionView.setText(bC.question)
         userButton1.setText(bC.answer[0])
@@ -135,21 +123,26 @@ class QuestionActivity : AppCompatActivity() {
     }
 
     fun checkBorderControlQuestions() {
-        if (bC.correctAnswer == userPressAnswerBc) {
+        if (bC.correctAnswer == userPressAnswer) {
             currentQuestionIndex++
-            currentQuestionIndexBc++
-
-
+            currentQuestionsIndexBc++
 
             when {
-                currentQuestionIndexBc <= borderControlQuestions.listOfQuestionsBC.size ->
-                   setBorderControlQuestion()
+                currentQuestionsIndexBc <= borderControlQuestions.listOfQuestionsBC.size ->
+                    setBorderControlQuestion()
             }
 
-        } else {
 
-            //Tillbaka till main
+        } else {
+            val question = borderControlQuestions.listOfQuestionsBC.get(currentQuestionsIndexBc)
+            if (question.correctAnswer != userPressAnswer) {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+
+
+            }
         }
 
     }
+
 }
