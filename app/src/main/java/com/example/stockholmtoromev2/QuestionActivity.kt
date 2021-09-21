@@ -125,7 +125,7 @@ class QuestionActivity : AppCompatActivity() {
     fun checkBorderControlQuestions() {
         if (bC.correctAnswer == userPressAnswer) {
             currentQuestionIndex++
-            currentQuestionsIndexBc++
+
 
             when {
                 currentQuestionsIndexBc <= borderControlQuestions.listOfQuestionsBC.size ->
@@ -133,11 +133,10 @@ class QuestionActivity : AppCompatActivity() {
             }
 
 
-        } else {
+        } else{
             val question = borderControlQuestions.listOfQuestionsBC.get(currentQuestionsIndexBc)
             if (question.correctAnswer != userPressAnswer) {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+
 
 
             }
