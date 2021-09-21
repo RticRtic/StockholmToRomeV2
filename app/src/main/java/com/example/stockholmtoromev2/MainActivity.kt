@@ -25,12 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         val button = findViewById<Button>(R.id.startButton)
         button.setOnClickListener {
-            if(userTypeInNameView.text.toString().isEmpty()) {
-                Toast.makeText(this, "Please enter your name", Toast.LENGTH_SHORT).show()
-                userSeeWelcomeTextView.setText("Please enter a name!")
-
-            }else{
-                val intent = Intent(this, QuestionActivity::class.java)
+            val intent = Intent(this, QuestionActivity::class.java)
                 startActivity(intent)
                 finish()
             }
@@ -39,5 +34,5 @@ class MainActivity : AppCompatActivity() {
 
 
 
-}
+
 
