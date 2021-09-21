@@ -39,7 +39,7 @@ class LastChanceQuestionsList() {
             "Italy",
             R.drawable.stop_sign1,
             "What is the nickname of the Italian footballteam?",
-            listOf("gli Azzurri","Forza Fratelli","Nerazzurri","Blucerchiati")
+            listOf("gli Azzurri","Forza Fratelli","Nerazzurri","Blucerchiati"),
             1
         )
         listOfQuestions.add(denmark)
