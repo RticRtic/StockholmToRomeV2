@@ -40,44 +40,26 @@ class QuestionActivity : AppCompatActivity() {
         userButton1 = findViewById(R.id.button1)
         userButton1.setOnClickListener {
             userPressAnswer = 1
-
             questionType()
-
-
 
 
         }
         userButton2 = findViewById(R.id.button2)
         userButton2.setOnClickListener {
             userPressAnswer = 2
-
             questionType()
-
-
-
-
 
         }
         userButton3 = findViewById(R.id.button3)
         userButton3.setOnClickListener {
             userPressAnswer = 3
-
             questionType()
-
-
-
-
 
         }
         userButton4 = findViewById(R.id.button4)
         userButton4.setOnClickListener {
             userPressAnswer = 4
-
             questionType()
-
-
-
-
 
         }
 
@@ -117,6 +99,7 @@ class QuestionActivity : AppCompatActivity() {
     fun checkIfCorrectAnswer() {
         if (q.correctAnswer == userPressAnswer) {
             currentQuestionIndex++
+            currentQuestionsIndexBc++
 
 
 
@@ -126,7 +109,7 @@ class QuestionActivity : AppCompatActivity() {
 
 
         } else {
-
+            setBorderControlQuestion()
         }
 
 
@@ -144,17 +127,14 @@ class QuestionActivity : AppCompatActivity() {
     }
 
     fun checkBorderControlQuestions() {
-
         if (bC.correctAnswer == userPressAnswer) {
-
-
+            currentQuestionIndex++
+            currentQuestionsIndexBc++
 
 
             if(currentQuestionsIndexBc <= borderControlQuestions.listOfQuestionsBC.size) {
                 setQuestion()
             }
-
-
 
 
         } else{
