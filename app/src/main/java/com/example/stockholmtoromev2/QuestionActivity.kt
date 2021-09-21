@@ -41,7 +41,7 @@ class QuestionActivity : AppCompatActivity() {
             userPressAnswer = 1
             setQuestion()
             checkIfCorrectAnswer()
-
+            userPressAnswerBc = 1
             setBorderControlQuestion()
             checkBorderControlQuestions()
 
@@ -52,7 +52,7 @@ class QuestionActivity : AppCompatActivity() {
             userPressAnswer = 2
             setQuestion()
             checkIfCorrectAnswer()
-
+            userPressAnswerBc = 2
             setBorderControlQuestion()
             checkBorderControlQuestions()
 
@@ -62,7 +62,7 @@ class QuestionActivity : AppCompatActivity() {
             userPressAnswer = 3
             setQuestion()
             checkIfCorrectAnswer()
-
+            userPressAnswerBc = 3
             setBorderControlQuestion()
             checkBorderControlQuestions()
 
@@ -73,7 +73,7 @@ class QuestionActivity : AppCompatActivity() {
             userPressAnswer = 4
             setQuestion()
             checkIfCorrectAnswer()
-
+            userPressAnswerBc = 4
             setBorderControlQuestion()
             checkBorderControlQuestions()
 
@@ -114,12 +114,10 @@ class QuestionActivity : AppCompatActivity() {
 
 
         } else {
-            val question = diffrentQuestions.listOfQuestions[currentQuestionIndex]
-            if (question.correctAnswer != userPressAnswer) {
-                setBorderControlQuestion()
+            setBorderControlQuestion()
 
 
-            }
+
         }
 
 
@@ -149,8 +147,8 @@ class QuestionActivity : AppCompatActivity() {
             }
 
         } else {
-            val questionBc = borderControlQuestions.listOfQuestionsBC[currentQuestionIndexBc]
-            
+
+            //Tillbaka till main
         }
 
     }
