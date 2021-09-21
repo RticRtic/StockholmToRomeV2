@@ -1,5 +1,6 @@
 package com.example.stockholmtoromev2
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.UserHandle
@@ -22,9 +23,9 @@ class QuestionActivity : AppCompatActivity() {
     var userPressAnswer: Int = 0
     var userPressAnswerBc: Int = 0
     var currentQuestionIndex = 0
-    var currentQuestionsIndexBc = 0
+    var currentQuestionIndexBc = 0
     var q: Destination = diffrentQuestions.listOfQuestions[currentQuestionIndex]
-    var bC: BorderControll = borderControlQuestions.listOfQuestionsBC[currentQuestionsIndexBc]
+    var bC: BorderControll = borderControlQuestions.listOfQuestionsBC[currentQuestionIndexBc]
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +38,10 @@ class QuestionActivity : AppCompatActivity() {
         userButton1 = findViewById(R.id.button1)
         userButton1.setOnClickListener {
             userPressAnswer = 1
+            setQuestion()
             checkIfCorrectAnswer()
+
+            setBorderControlQuestion()
             checkBorderControlQuestions()
 
 
@@ -45,14 +49,20 @@ class QuestionActivity : AppCompatActivity() {
         userButton2 = findViewById(R.id.button2)
         userButton2.setOnClickListener {
             userPressAnswer = 2
+            setQuestion()
             checkIfCorrectAnswer()
+
+            setBorderControlQuestion()
             checkBorderControlQuestions()
 
         }
         userButton3 = findViewById(R.id.button3)
         userButton3.setOnClickListener {
             userPressAnswer = 3
+            setQuestion()
             checkIfCorrectAnswer()
+
+            setBorderControlQuestion()
             checkBorderControlQuestions()
 
 
@@ -60,15 +70,19 @@ class QuestionActivity : AppCompatActivity() {
         userButton4 = findViewById(R.id.button4)
         userButton4.setOnClickListener {
             userPressAnswer = 4
+            setQuestion()
             checkIfCorrectAnswer()
+
+            setBorderControlQuestion()
             checkBorderControlQuestions()
 
         }
 
 
+
+
+
         setQuestion()
-
-
     }
 
 
@@ -88,8 +102,8 @@ class QuestionActivity : AppCompatActivity() {
 
     fun checkIfCorrectAnswer() {
         if (q.correctAnswer == userPressAnswer) {
-            currentQuestionIndex++
-            currentQuestionsIndexBc++
+            currentQuestionIndex ++
+            currentQuestionIndexBc ++
 
             when {
                 currentQuestionIndex <= diffrentQuestions.listOfQuestions.size ->
@@ -97,10 +111,11 @@ class QuestionActivity : AppCompatActivity() {
             }
 
 
+
         } else {
-            val question = diffrentQuestions.listOfQuestions.get(currentQuestionIndex)
+            val question = diffrentQuestions.listOfQuestions[currentQuestionIndex]
             if (question.correctAnswer != userPressAnswer) {
-               setBorderControlQuestion()
+                setBorderControlQuestion()
 
 
             }
@@ -110,7 +125,7 @@ class QuestionActivity : AppCompatActivity() {
     }
 
     fun setBorderControlQuestion() {
-    bC = borderControlQuestions.listOfQuestionsBC[currentQuestionsIndexBc]
+        bC = borderControlQuestions.listOfQuestionsBC[currentQuestionIndexBc]
         userSeeFlagView.setImageResource(bC.image)
         userSeeQuestionView.setText(bC.question)
         userButton1.setText(bC.answer[0])
@@ -121,11 +136,21 @@ class QuestionActivity : AppCompatActivity() {
     }
 
     fun checkBorderControlQuestions() {
-        if(bC.correctAnswer == userPressAnswerBc ) {
-            currentQuestionsIndexBc++
+        if (bC.correctAnswer == userPressAnswerBc) {
+            currentQuestionIndex++
+            currentQuestionIndexBc++
 
+
+
+            when {
+                currentQuestionIndexBc <= borderControlQuestions.listOfQuestionsBC.size ->
+                   setBorderControlQuestion()
+            }
+
+        } else {
+            val questionBc = borderControlQuestions.listOfQuestionsBC[currentQuestionIndexBc]
+            
         }
 
     }
-
 }

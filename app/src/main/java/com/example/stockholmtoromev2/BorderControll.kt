@@ -16,9 +16,9 @@ class QuestionsListBorderControll() {
         val germanyBC = BorderControll(R.drawable.stop_sign1, "Germany are famous for their carindustry, what brand is not from Germany?", listOf("Audi", "Porsche", "Fiat", "Volkswagen"),3)
 
 
-        val switzerlandBC = BorderControll(R.drawable.stop_sign1, "What are the swiss not famous from?", listOf("Fondue", "Chocolate", "Cable cars", "Swiss cutlery"),4)
+        val switzerlandBC = BorderControll(R.drawable.stop_sign1, "What are the swiss not famous of?", listOf("Fondue", "Chocolate", "Cable cars", "Swiss cutlery"),4)
 
-        val italyBC = BorderControll(R.drawable.stop_sign1, "What was the currency in Italy before they adopted the Euro?", listOf("Dinar", "Lira", "Franc", "Peso"), 1)
+        val italyBC = BorderControll(R.drawable.stop_sign1, "What was the currency in Italy before they adopted the Euro?", listOf("Dinar", "Lira", "Franc", "Peso"), 2)
 
 
         listOfQuestionsBC.add(denmarkBC)
