@@ -12,7 +12,7 @@ class QuestionsList() {
 
     init {
         val denmark = Destination(      "Denmark",
-            R.drawable.denmarkflag,
+                                         R.drawable.denmarkflag,
                                         "Who was the Danish king whom ruled over England during the viking era?",
                                         listOf("Knut the great one","Albert the gready","Björn ironside","Gorm the old"),
                                         1)
@@ -26,13 +26,13 @@ class QuestionsList() {
 
 
         val switzerland = Destination(  "Switzerland",
-            R.drawable.switzerland_flag,
+                                        R.drawable.switzerland_flag,
                                         "What brand does not originate from Switzerland?",
                                         listOf("Knorr","Breitling","Birkenstock","Lindt"),
                                         3)
 
         val italy = Destination(        "Italy",
-            R.drawable.italy_flag,
+                                        R.drawable.italy_flag,
                                         "What is the name of the Italian primeminister",
                                         listOf("Giuseppe Conte","Paolo Gentiloni","Mario Draghi","Silvio Berlusconi"),
                                         3)
