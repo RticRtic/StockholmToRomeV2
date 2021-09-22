@@ -123,10 +123,15 @@ class QuestionActivity : AppCompatActivity() {
 
 
 
-            if (currentQuestionIndex <= diffrentQuestions.listOfQuestions.size ) {
+            if (currentQuestionIndex <= diffrentQuestions.listOfQuestions.size) {
 
                 setQuestion()
+
             }
+
+
+
+
 
 
         } else {
@@ -163,8 +168,8 @@ class QuestionActivity : AppCompatActivity() {
             }
 
         } else {
-           // val intent = Intent(this, MainActivity::class.java)
-           // startActivity(intent)
+           val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -179,7 +184,7 @@ class QuestionActivity : AppCompatActivity() {
             checkBorderControlQuestions()
 
         }else if(isBorderQuestion == false && isLastChanceQuestions == true) {
-                checkLastChanceQuestions()
+            checkLastChanceQuestions()
 
             }
 
