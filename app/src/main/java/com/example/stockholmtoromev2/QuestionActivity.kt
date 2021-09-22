@@ -78,7 +78,8 @@ class QuestionActivity : AppCompatActivity() {
 
     fun setQuestion() {
         isBorderQuestion = false
-        q = diffrentQuestions.listOfQuestions[currentQuestionIndex]
+        isLastChanceQuestions = false
+        q=diffrentQuestions.listOfQuestions[currentQuestionIndex]
         userSeeFlagView.setImageResource(q.image)
         userSeeQuestionView.setText(q.question)
         userButton1.setText(q.answer[0])
@@ -91,6 +92,7 @@ class QuestionActivity : AppCompatActivity() {
 
     fun setBorderControlQuestion() {
         isBorderQuestion = true
+        isLastChanceQuestions = false
         bC = borderControlQuestions.listOfQuestionsBC[currentQuestionsIndexBc]
         userSeeFlagView.setImageResource(bC.image)
         userSeeQuestionView.setText(bC.question)
@@ -102,7 +104,8 @@ class QuestionActivity : AppCompatActivity() {
     }
 
     fun setLastChanceQuestion() {
-        isLastChanceQuestions = false
+        isBorderQuestion = false
+        isLastChanceQuestions = true
         lC = lastChanceQuestions.listOfQuestionslC[currenQuestionsIndexLc]
         userSeeFlagView.setImageResource(lC.image)
         userSeeQuestionView.setText(lC.question)
@@ -120,7 +123,8 @@ class QuestionActivity : AppCompatActivity() {
 
 
 
-            if (currentQuestionIndex <= diffrentQuestions.listOfQuestions.size) {
+            if (currentQuestionIndex <= diffrentQuestions.listOfQuestions.size ) {
+
                 setQuestion()
             }
 
@@ -134,14 +138,14 @@ class QuestionActivity : AppCompatActivity() {
         if (bC.correctAnswer == userPressAnswer) {
 
 
-
             if(currentQuestionsIndexBc <= borderControlQuestions.listOfQuestionsBC.size) {
-                setQuestion()
+                setLastChanceQuestion()
             }
 
 
         } else{
-            setLastChanceQuestion()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
 
         }
 
@@ -152,7 +156,8 @@ class QuestionActivity : AppCompatActivity() {
             currentQuestionsIndexBc++
             currenQuestionsIndexLc++
 
-            if(currenQuestionsIndexLc <= lastChanceQuestions.listOfQuestionslC.size) {
+
+            if(currenQuestionsIndexLc <= lastChanceQuestions.listOfQuestionslC.size ) {
                 setQuestion()
 
             }
@@ -166,22 +171,20 @@ class QuestionActivity : AppCompatActivity() {
 
 
     fun questionType() {
-        if(isBorderQuestion == false) {
+        if(isBorderQuestion == false && isLastChanceQuestions == false) {
             checkIfCorrectAnswer()
 
         }
-        else if(isBorderQuestion == true) {
+        else if(isBorderQuestion == true && isLastChanceQuestions == false) {
             checkBorderControlQuestions()
-        }
-        else {
-            questionTypeLc()
-        }
 
-    }
-    fun questionTypeLc() {
-        if(isLastChanceQuestions == false) {
-            checkLastChanceQuestions()
-        }
+        }else if(isBorderQuestion == false && isLastChanceQuestions == true) {
+                checkLastChanceQuestions()
+
+            }
+
+
+
     }
 
 }

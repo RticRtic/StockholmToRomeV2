@@ -8,6 +8,10 @@
         <entry key="..\:/Users/jespe/AndroidStudioProjects/StockholmToRomeV2/app/src/main/res/layout/activity_final_page.xml" value="0.5489583333333333" />
         <entry key="..\:/Users/jespe/AndroidStudioProjects/StockholmToRomeV2/app/src/main/res/layout/activity_main.xml" value="0.4109375" />
         <entry key="..\:/Users/jespe/AndroidStudioProjects/StockholmToRomeV2/app/src/main/res/layout/activity_question.xml" value="0.425" />
+<<<<<<< HEAD
+=======
+        <entry key="app/src/main/res/layout/activity_final_page.xml" value="0.15364583333333334" />
+>>>>>>> 1e8c51b46fd68d9a549733e45808c5ab9f191cb7
         <entry key="app/src/main/res/layout/activity_question.xml" value="0.15070921985815602" />
       </map>
     </option>
