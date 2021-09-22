@@ -10,26 +10,29 @@ import android.widget.*
 
 class QuestionActivity : AppCompatActivity() {
 
-    lateinit var userSeeFlagView: ImageView
-    lateinit var userSeeQuestionView: TextView
+    lateinit var userSeeFlagView:       ImageView
+    lateinit var userSeeQuestionView:   TextView
     lateinit var userButton1: Button
     lateinit var userButton2: Button
     lateinit var userButton3: Button
     lateinit var userButton4: Button
 
 
-    var diffrentQuestions = QuestionsList()
-    var borderControlQuestions = QuestionsListBorderControll()
-    var lastChanceQuestions = LastChanceQuestionsList()
-    var userPressAnswer: Int = 0
-    var currentQuestionIndex = 0
+    var diffrentQuestions       = QuestionsList()
+    var borderControlQuestions  = QuestionsListBorderControll()
+    var lastChanceQuestions     = LastChanceQuestionsList()
+
+    var userPressAnswer: Int    = 0
+    var currentQuestionIndex    = 0
     var currentQuestionsIndexBc = 0
-    var currenQuestionsIndexLc = 0
-    var isLastChanceQuestions = false
-    var isBorderQuestion = false
-    var q: Destination = diffrentQuestions.listOfQuestions[currentQuestionIndex]
-    var bC: BorderControll = borderControlQuestions.listOfQuestionsBC[currentQuestionsIndexBc]
-    var lC: LastChance = lastChanceQuestions.listOfQuestionslC[currenQuestionsIndexLc]
+    var currenQuestionsIndexLc  = 0
+
+    var isBorderQuestion        = false
+    var isLastChanceQuestions   = false
+
+    var q: Destination          = diffrentQuestions.listOfQuestions[currentQuestionIndex]
+    var bC: BorderControll      = borderControlQuestions.listOfQuestionsBC[currentQuestionsIndexBc]
+    var lC: LastChance          = lastChanceQuestions.listOfQuestionslC[currenQuestionsIndexLc]
 
 
 
@@ -45,7 +48,6 @@ class QuestionActivity : AppCompatActivity() {
         userButton1.setOnClickListener {
             userPressAnswer = 1
             questionType()
-
 
         }
         userButton2 = findViewById(R.id.button2)
@@ -76,8 +78,7 @@ class QuestionActivity : AppCompatActivity() {
 
     fun setQuestion() {
         isBorderQuestion = false
-        q=diffrentQuestions.listOfQuestions[currentQuestionIndex]
-
+        q = diffrentQuestions.listOfQuestions[currentQuestionIndex]
         userSeeFlagView.setImageResource(q.image)
         userSeeQuestionView.setText(q.question)
         userButton1.setText(q.answer[0])
@@ -87,7 +88,6 @@ class QuestionActivity : AppCompatActivity() {
 
 
     }
-
 
     fun setBorderControlQuestion() {
         isBorderQuestion = true
@@ -100,9 +100,10 @@ class QuestionActivity : AppCompatActivity() {
         userButton4.setText(bC.answer[3])
 
     }
+
     fun setLastChanceQuestion() {
         isLastChanceQuestions = false
-        lC = lastChanceQuestions.listOfQuestionslC[currentQuestionIndex]
+        lC = lastChanceQuestions.listOfQuestionslC[currenQuestionsIndexLc]
         userSeeFlagView.setImageResource(lC.image)
         userSeeQuestionView.setText(lC.question)
         userButton1.setText(lC.answer[0])
@@ -119,7 +120,7 @@ class QuestionActivity : AppCompatActivity() {
 
 
 
-            if (currentQuestionIndex <= diffrentQuestions.listOfQuestions.size ) {
+            if (currentQuestionIndex <= diffrentQuestions.listOfQuestions.size) {
                 setQuestion()
             }
 
@@ -131,9 +132,7 @@ class QuestionActivity : AppCompatActivity() {
     }
     fun checkBorderControlQuestions() {
         if (bC.correctAnswer == userPressAnswer) {
-            currentQuestionIndex++
-            currentQuestionsIndexBc++
-            currenQuestionsIndexLc++
+
 
 
             if(currentQuestionsIndexBc <= borderControlQuestions.listOfQuestionsBC.size) {
@@ -153,15 +152,14 @@ class QuestionActivity : AppCompatActivity() {
             currentQuestionsIndexBc++
             currenQuestionsIndexLc++
 
-            if(currenQuestionsIndexLc <= lastChanceQuestions.listOfQuestionslC.size ) {
+            if(currenQuestionsIndexLc <= lastChanceQuestions.listOfQuestionslC.size) {
                 setQuestion()
 
             }
 
-        }
-        else {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+        } else {
+           // val intent = Intent(this, MainActivity::class.java)
+           // startActivity(intent)
         }
     }
 
@@ -174,22 +172,17 @@ class QuestionActivity : AppCompatActivity() {
         }
         else if(isBorderQuestion == true) {
             checkBorderControlQuestions()
-            if(isLastChanceQuestions == false) {
-                checkLastChanceQuestions()
-
-            }
-            else {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-            }
-
+        }
+        else {
+            questionTypeLc()
         }
 
-
-
     }
-
-
+    fun questionTypeLc() {
+        if(isLastChanceQuestions == false) {
+            checkLastChanceQuestions()
+        }
+    }
 
 }
 
