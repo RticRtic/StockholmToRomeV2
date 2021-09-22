@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#7290ED"
+    android:background="#70B8B8"
     tools:context=".QuestionActivity">
 
     <Button
@@ -28,7 +28,9 @@
         android:layout_height="200dp"
         android:layout_marginTop="70dp"
         android:layout_marginBottom="24dp"
-        android:background="#7290ED"
+        android:background="#81B5B6"
+        android:fadingEdge="horizontal|vertical"
+        android:fadingEdgeLength="12dp"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -46,6 +48,7 @@
         android:layout_marginBottom="312dp"
         android:background="#4C8CD8"
         android:elevation="50dp"
+        android:gravity="center"
         android:text="TextView"
         android:textColor="#212121"
         app:layout_constraintBottom_toBottomOf="parent"
