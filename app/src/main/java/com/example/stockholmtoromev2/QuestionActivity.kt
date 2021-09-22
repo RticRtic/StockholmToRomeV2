@@ -124,7 +124,9 @@ class QuestionActivity : AppCompatActivity() {
 
             if (currentQuestionIndex <= diffrentQuestions.listOfQuestions.size) {
                 setQuestion()
+
             }
+
 
         } else {
             setBorderControlQuestion()
