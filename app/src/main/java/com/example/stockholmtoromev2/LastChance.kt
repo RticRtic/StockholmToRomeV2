@@ -14,14 +14,14 @@ class LastChanceQuestionsList() {
     init {
         val denmark = LastChance(
             "Denmark",
-            R.drawable.stop_sign1,
+            R.drawable.last_chance2,
             "What is the national dish in Denmark?",
-            listOf("Fried pork with parsleysause","Meatballs","Deepfried Fish","Fermented cabbage"),
+            listOf("Fried pork with parsleysauce","Meatballs","Deepfried Fish","Fermented cabbage"),
             1)
 
         val germany = LastChance(
             "Germany",
-            R.drawable.stop_sign1,
+            R.drawable.last_chance2,
             "What of the following political parties are not from Germany?",
             listOf("CDU","VOX","ÖDP","Volt"),
             2
@@ -29,15 +29,15 @@ class LastChanceQuestionsList() {
 
         val switzerland = LastChance(
             "Switzerland",
-            R.drawable.stop_sign1,
+            R.drawable.last_chance2,
             "What cheese do not come fron Switzerland?",
-            listOf("Emmentaler","Raclette","Gruyéré","Goda"),
+            listOf("Emmentaler","Raclette","Gruyéré","Gouda"),
             4
         )
 
         val italy = LastChance(
             "Italy",
-            R.drawable.stop_sign1,
+            R.drawable.last_chance2,
             "What is the nickname of the Italian footballteam?",
             listOf("gli Azzurri","Forza Fratelli","Nerazzurri","Blucerchiati"),
             1

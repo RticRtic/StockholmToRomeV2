@@ -4,27 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#7290ED"
+    android:background="#70B8B8"
 
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/flagIv"
-        android:layout_width="match_parent"
-        android:layout_height="253dp"
-        android:layout_marginTop="4dp"
-        android:background="#7290ED"
+        android:id="@+id/stockholm_picture"
+        android:layout_width="413dp"
+        android:layout_height="227dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/questionTv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/stockholm" />
+        app:srcCompat="@drawable/stockholm" />
 
     <TextView
         android:id="@+id/questionTv"
         android:layout_width="357dp"
         android:layout_height="191dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="8dp"
         android:background="#4C8CD8"
         android:elevation="40dp"
         android:fontFamily="serif"
@@ -34,53 +37,34 @@
         android:textSize="14dp"
         app:layout_constraintBottom_toTopOf="@+id/startButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/flagIv"
-        app:layout_constraintVertical_bias="0.071" />
+        app:layout_constraintTop_toBottomOf="@+id/stockholm_picture" />
 
     <Button
         android:id="@+id/startButton"
         android:layout_width="277dp"
         android:layout_height="98dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="160dp"
         android:backgroundTint="#274EBD"
         android:text="press to Start the journey"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionTv" />
 
     <TextView
         android:id="@+id/userSeeGameNameTv"
-        android:layout_width="286dp"
-        android:layout_height="78dp"
-        android:clickable="false"
-        android:elevation="50dp"
-        android:ellipsize="none"
-        android:fontFamily="sans-serif-condensed"
-        android:gravity="center"
+        android:layout_width="225dp"
+        android:layout_height="72dp"
         android:text="STOCKHOLM TO ROME"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="@+id/flagIv"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/stockholm_picture"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/flagIv"
-        app:layout_constraintVertical_bias="0.171" />
-
-    <EditText
-        android:id="@+id/userTypeNameEt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Name"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/startButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.432"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/questionTv"
-        app:layout_constraintVertical_bias="0.42" />
+        app:layout_constraintTop_toTopOf="@+id/stockholm_picture"
+        app:layout_constraintVertical_bias="0.58" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

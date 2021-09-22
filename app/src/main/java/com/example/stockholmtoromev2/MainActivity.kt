@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var userSeeGameNameView: TextView
     lateinit var userSeeImageView: ImageView
     lateinit var userSeeWelcomeTextView: TextView
-    lateinit var userTypeInNameView: EditText
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,9 +18,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         userSeeGameNameView = findViewById(R.id.userSeeGameNameTv)
-        userSeeImageView = findViewById(R.id.flagIv)
+        userSeeImageView = findViewById(R.id.stockholm_picture)
         userSeeWelcomeTextView = findViewById(R.id.questionTv)
-        userTypeInNameView = findViewById(R.id.userTypeNameEt)
+
 
 
         val button = findViewById<Button>(R.id.startButton)
