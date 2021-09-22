@@ -23,7 +23,7 @@ class LastChanceQuestionsList() {
             "Germany",
             R.drawable.last_chance2,
             "What of the following political parties are not from Germany?",
-            listOf("CDU","VOX","ÖDP","Volt"),
+            listOf("CDU","VOX","ÖDP","VOLT"),
             2
         )
 
