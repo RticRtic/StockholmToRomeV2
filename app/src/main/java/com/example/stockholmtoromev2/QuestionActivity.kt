@@ -124,14 +124,16 @@ class QuestionActivity : AppCompatActivity() {
 
 
             if (currentQuestionIndex <= diffrentQuestions.listOfQuestions.size) {
-
                 setQuestion()
 
+
+
             }
+            else if(currentQuestionIndex != diffrentQuestions.listOfQuestions.size) {
+                val intent = Intent(this, FinalPageActivity::class.java)
+                startActivity(intent)
 
-
-
-
+            }
 
 
         } else {
@@ -148,7 +150,7 @@ class QuestionActivity : AppCompatActivity() {
             }
 
 
-        } else{
+        } else {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
 
