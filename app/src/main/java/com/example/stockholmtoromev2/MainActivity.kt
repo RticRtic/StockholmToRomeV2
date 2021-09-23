@@ -21,6 +21,14 @@ class MainActivity : AppCompatActivity() {
         userSeeImageView = findViewById(R.id.stockholm_picture)
         userSeeWelcomeTextView = findViewById(R.id.questionTv)
 
+        userSeeWelcomeTextView.text = "In this travelquiz you’re going from Stockholm to Rome. " +
+                                      "On each stop on the way to Rome there will be a specific question for that country."+
+                                      " To travel along you have to guess the right answer on each stop along the way. " +
+                                      "If you pick the wrong answer you will be sent to the bordercontroll."+
+                                      " There you have to answer correctly to continue on your journey. " +
+                                      "If you answer correct you have to answer to a new question about the same country. " +
+                                      "You have to answer correct or you´ll be sent back to Stockholm"
+
 
 
         val button = findViewById<Button>(R.id.startButton)
