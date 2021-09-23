@@ -7,6 +7,7 @@ import android.os.UserHandle
 import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.core.graphics.toColor
 
 class QuestionActivity : AppCompatActivity() {
 
@@ -175,6 +176,9 @@ class QuestionActivity : AppCompatActivity() {
 
 
     fun questionType() {
+
+
+
         if (currentQuestionIndex == 4 && q.correctAnswer == userPressAnswer) {
             val finalintent = Intent(this, FinalPageActivity::class.java)
             startActivity(finalintent)
@@ -193,6 +197,9 @@ class QuestionActivity : AppCompatActivity() {
 
         }
     }
+
+
+
 }
 
 

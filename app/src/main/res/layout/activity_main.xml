@@ -32,7 +32,7 @@
         android:elevation="40dp"
         android:fontFamily="serif"
         android:gravity="center"
-        android:text="In this travelquiz you’re going from stockholm to rome. Each stop on the way to Rome, there will be a specific question for that location. To travel along you have to guess the right answer. If you guess the wrong answer you will be brought back to Stockholm. "
+        android:text="textview"
         android:textColor="#212121"
         android:textSize="14dp"
         app:layout_constraintBottom_toTopOf="@+id/startButton"
