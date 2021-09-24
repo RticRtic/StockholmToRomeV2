@@ -1,6 +1,7 @@
 package com.example.stockholmtoromev2
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.UserHandle
@@ -116,10 +117,18 @@ class QuestionActivity : AppCompatActivity() {
     }
 
     fun checkIfCorrectAnswer() {
+        when(q.correctAnswer) {
+            1 -> userButton1.setBackgroundColor(Color.GREEN)
+            2 -> userButton2.setBackgroundColor(Color.GREEN)
+            3 -> userButton3.setBackgroundColor(Color.GREEN)
+            4 -> userButton4.setBackgroundColor(Color.GREEN)
+        }
+        
         if (q.correctAnswer == userPressAnswer) {
             currentQuestionIndex++
             currentQuestionsIndexBc++
             currenQuestionsIndexLc++
+
 
 
 
@@ -130,6 +139,12 @@ class QuestionActivity : AppCompatActivity() {
 
 
         } else {
+            when(userPressAnswer) {
+                1 -> userButton1.setBackgroundColor(Color.RED)
+                2 -> userButton2.setBackgroundColor(Color.RED)
+                3 -> userButton3.setBackgroundColor(Color.RED)
+                4 -> userButton4.setBackgroundColor(Color.RED)
+            }
             setBorderControlQuestion()
         }
 
