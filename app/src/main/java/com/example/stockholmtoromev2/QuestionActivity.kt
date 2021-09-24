@@ -44,6 +44,7 @@ class QuestionActivity : AppCompatActivity() {
         userSeeQuestionView = findViewById(R.id.textView)
 
 
+
         userButton1 = findViewById(R.id.button1)
         userButton1.setOnClickListener {
             userPressAnswer = 1

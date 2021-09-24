@@ -22,10 +22,7 @@ class FinalPageActivity : AppCompatActivity() {
             finish()
         }
 
-        val exitButton = findViewById<Button>(R.id.exitButton)
-        exitButton.setOnClickListener {
-            finishAffinity()
-        }
+
 
     }
 }
