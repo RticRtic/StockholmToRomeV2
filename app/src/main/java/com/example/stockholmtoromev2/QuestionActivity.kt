@@ -2,6 +2,7 @@ package com.example.stockholmtoromev2
 
 import android.content.Intent
 import android.graphics.Color
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
@@ -33,6 +34,7 @@ class QuestionActivity : AppCompatActivity() {
     var currentQuestionIndex = 0
     var currentQuestionsIndexBc = 0
     var currenQuestionsIndexLc = 0
+    var mediaPlayer: MediaPlayer? = null
 
 
     var isBorderQuestion = false
@@ -48,6 +50,7 @@ class QuestionActivity : AppCompatActivity() {
         setContentView(R.layout.activity_question)
         userSeeFlagView = findViewById(R.id.flaglv)
         userSeeQuestionView = findViewById(R.id.textView)
+        startMedia()
 
 
         userButton1 = findViewById(R.id.button1)
@@ -170,6 +173,7 @@ class QuestionActivity : AppCompatActivity() {
             userPressButtonColorRed()
             Handler().postDelayed({
                 val intent = Intent(this, MainActivity::class.java)
+                mediaPlayer?.stop()
                 startActivity(intent)
             }, 2000)
 
@@ -198,6 +202,7 @@ class QuestionActivity : AppCompatActivity() {
             userPressButtonColorRed()
             Handler().postDelayed({
                 val intent = Intent(this, MainActivity::class.java)
+                mediaPlayer?.stop()
                 startActivity(intent)
             }, 2000)
 
@@ -210,9 +215,12 @@ class QuestionActivity : AppCompatActivity() {
 
         if (currentQuestionIndex == 4 && q.correctAnswer == userPressAnswer) {
             val finalintent = Intent(this, FinalPageActivity::class.java)
+            mediaPlayer?.stop()
             startActivity(finalintent)
+
         } else if (currentQuestionIndex == 4 && q.correctAnswer != userPressAnswer) {
             val mainintent = Intent(this, MainActivity::class.java)
+            mediaPlayer?.stop()
             startActivity(mainintent)
 
         } else if (isBorderQuestion == false && isLastChanceQuestions == false) {
@@ -275,7 +283,12 @@ class QuestionActivity : AppCompatActivity() {
 
         }
     }
-
+    fun startMedia() {
+        mediaPlayer = MediaPlayer.create(this, R.raw.backgroundmusic)
+        mediaPlayer?.setOnPreparedListener() {
+            mediaPlayer?.start()
+        }
+    }
 
 }
 
