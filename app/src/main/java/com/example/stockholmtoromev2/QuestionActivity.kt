@@ -4,6 +4,10 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+
+import android.os.Handler
+import android.os.UserHandle
+
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -79,6 +83,7 @@ class QuestionActivity : AppCompatActivity() {
 
 
     fun setQuestion() {
+        restoreButtonColor()
         isBorderQuestion = false
         isLastChanceQuestions = false
         q = diffrentQuestions.listOfQuestions[currentQuestionIndex]
@@ -93,6 +98,7 @@ class QuestionActivity : AppCompatActivity() {
     }
 
     fun setBorderControlQuestion() {
+        restoreButtonColor()
         isBorderQuestion = true
         isLastChanceQuestions = false
         bC = borderControlQuestions.listOfQuestionsBC[currentQuestionsIndexBc]
@@ -106,6 +112,7 @@ class QuestionActivity : AppCompatActivity() {
     }
 
     fun setLastChanceQuestion() {
+        restoreButtonColor()
         isBorderQuestion = false
         isLastChanceQuestions = true
         lC = lastChanceQuestions.listOfQuestionslC[currenQuestionsIndexLc]
@@ -119,27 +126,27 @@ class QuestionActivity : AppCompatActivity() {
 
     fun checkIfCorrectAnswer() {
 
-
-        if (q.correctAnswer == userPressAnswer) {
-            currentQuestionIndex++
-            currentQuestionsIndexBc++
-            currenQuestionsIndexLc++
-
-            when (q.correctAnswer) {
+        when(q.correctAnswer) {
                 1 -> userButton1.setBackgroundColor(Color.GREEN)
                 2 -> userButton2.setBackgroundColor(Color.GREEN)
                 3 -> userButton3.setBackgroundColor(Color.GREEN)
                 4 -> userButton4.setBackgroundColor(Color.GREEN)
             }
 
+        if (q.correctAnswer == userPressAnswer) {
+
+            Handler().postDelayed({
+
+                currentQuestionIndex++
+                currentQuestionsIndexBc++
+                currenQuestionsIndexLc++
 
                 if (currentQuestionIndex <= diffrentQuestions.listOfQuestions.size) {
 
                     setQuestion()
-
-
-
                 }
+            } , 2000)
+
 
 
         } else {
@@ -214,6 +221,12 @@ class QuestionActivity : AppCompatActivity() {
         }
     }
 
+fun restoreButtonColor() {
+    userButton1.setBackgroundColor(Color.BLUE)
+    userButton2.setBackgroundColor(Color.BLUE)
+    userButton3.setBackgroundColor(Color.BLUE)
+    userButton4.setBackgroundColor(Color.BLUE)
+}
 
 
 
