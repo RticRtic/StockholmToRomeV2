@@ -4,11 +4,12 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.UserHandle
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.core.graphics.toColor
+import java.util.*
+import kotlin.concurrent.schedule
 
 class QuestionActivity : AppCompatActivity() {
 
@@ -29,6 +30,7 @@ class QuestionActivity : AppCompatActivity() {
     var currentQuestionsIndexBc = 0
     var currenQuestionsIndexLc = 0
 
+
     var isBorderQuestion = false
     var isLastChanceQuestions = false
 
@@ -42,7 +44,6 @@ class QuestionActivity : AppCompatActivity() {
         setContentView(R.layout.activity_question)
         userSeeFlagView = findViewById(R.id.flaglv)
         userSeeQuestionView = findViewById(R.id.textView)
-
 
 
         userButton1 = findViewById(R.id.button1)
@@ -69,7 +70,6 @@ class QuestionActivity : AppCompatActivity() {
             questionType()
 
         }
-
 
         setQuestion()
 
@@ -118,25 +118,28 @@ class QuestionActivity : AppCompatActivity() {
     }
 
     fun checkIfCorrectAnswer() {
-        when(q.correctAnswer) {
-            1 -> userButton1.setBackgroundColor(Color.GREEN)
-            2 -> userButton2.setBackgroundColor(Color.GREEN)
-            3 -> userButton3.setBackgroundColor(Color.GREEN)
-            4 -> userButton4.setBackgroundColor(Color.GREEN)
-        }
-        
+
+
         if (q.correctAnswer == userPressAnswer) {
             currentQuestionIndex++
             currentQuestionsIndexBc++
             currenQuestionsIndexLc++
 
-
-
-
-            if (currentQuestionIndex <= diffrentQuestions.listOfQuestions.size) {
-                setQuestion()
-
+            when (q.correctAnswer) {
+                1 -> userButton1.setBackgroundColor(Color.GREEN)
+                2 -> userButton2.setBackgroundColor(Color.GREEN)
+                3 -> userButton3.setBackgroundColor(Color.GREEN)
+                4 -> userButton4.setBackgroundColor(Color.GREEN)
             }
+
+
+                if (currentQuestionIndex <= diffrentQuestions.listOfQuestions.size) {
+
+                    setQuestion()
+
+
+
+                }
 
 
         } else {
@@ -193,8 +196,6 @@ class QuestionActivity : AppCompatActivity() {
 
     fun questionType() {
 
-
-
         if (currentQuestionIndex == 4 && q.correctAnswer == userPressAnswer) {
             val finalintent = Intent(this, FinalPageActivity::class.java)
             startActivity(finalintent)
@@ -204,7 +205,6 @@ class QuestionActivity : AppCompatActivity() {
 
         }else if (isBorderQuestion == false && isLastChanceQuestions == false) {
             checkIfCorrectAnswer()
-
         } else if (isBorderQuestion == true && isLastChanceQuestions == false) {
             checkBorderControlQuestions()
 
@@ -213,6 +213,12 @@ class QuestionActivity : AppCompatActivity() {
 
         }
     }
+
+
+
+
+
+
 
 
 
