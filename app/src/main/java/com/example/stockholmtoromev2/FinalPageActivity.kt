@@ -24,6 +24,14 @@ class FinalPageActivity : AppCompatActivity() {
             finish()
         }
 
+        val hangOutWithPopeButton = findViewById<Button>(R.id.pope_button)
+        hangOutWithPopeButton.setBackgroundColor(Color.BLUE)
+        hangOutWithPopeButton.setOnClickListener {
+            val intent = Intent(this, HangOutWithPopeActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
 
 
     }

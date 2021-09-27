@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#70B8B8"
+    tools:context=".HangOutWithPopeActivity">
+
+    <ImageView
+        android:id="@+id/userSeeImage_Iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="316dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/fontana_de_trevi" />
+
+    <TextView
+        android:id="@+id/userSeeText_Tv"
+        android:layout_width="394dp"
+        android:layout_height="151dp"
+        android:layout_marginTop="8dp"
+        android:background="#4C8CD8"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userSeeImage_Iv" />
+
+    <Button
+        android:id="@+id/nextFact_Button"
+        android:layout_width="129dp"
+        android:layout_height="131dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#274EBD"
+        android:text="Next Fact"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toEndOf="@+id/playAgain_Button"
+        app:layout_constraintTop_toBottomOf="@+id/userSeeText_Tv" />
+
+    <Button
+        android:id="@+id/playAgain_Button"
+        android:layout_width="129dp"
+        android:layout_height="131dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#274EBD"
+        android:text="PLay Again"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userSeeText_Tv" />
+</androidx.constraintlayout.widget.ConstraintLayout>
