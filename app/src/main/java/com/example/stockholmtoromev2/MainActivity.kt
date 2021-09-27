@@ -1,6 +1,7 @@
 package com.example.stockholmtoromev2
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
 
 
         val button = findViewById<Button>(R.id.startButton)
+        button.setBackgroundColor(Color.BLUE)
         button.setOnClickListener {
             val intent = Intent(this, QuestionActivity::class.java)
                 startActivity(intent)
