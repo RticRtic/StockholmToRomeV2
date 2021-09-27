@@ -78,7 +78,6 @@ class QuestionActivity : AppCompatActivity() {
         setQuestion()
 
 
-
     }
 
 
@@ -126,12 +125,7 @@ class QuestionActivity : AppCompatActivity() {
 
     fun checkIfCorrectAnswer() {
 
-        when(q.correctAnswer) {
-                1 -> userButton1.setBackgroundColor(Color.GREEN)
-                2 -> userButton2.setBackgroundColor(Color.GREEN)
-                3 -> userButton3.setBackgroundColor(Color.GREEN)
-                4 -> userButton4.setBackgroundColor(Color.GREEN)
-            }
+        userPressButtonColorGreen()
 
         if (q.correctAnswer == userPressAnswer) {
 
@@ -145,60 +139,71 @@ class QuestionActivity : AppCompatActivity() {
 
                     setQuestion()
                 }
-            } , 2000)
-
+            }, 2000)
 
 
         } else {
-            when(userPressAnswer) {
-                1 -> userButton1.setBackgroundColor(Color.RED)
-                2 -> userButton2.setBackgroundColor(Color.RED)
-                3 -> userButton3.setBackgroundColor(Color.RED)
-                4 -> userButton4.setBackgroundColor(Color.RED)
-            }
-            setBorderControlQuestion()
+            userPressButtonColorRed()
+
+            Handler().postDelayed({
+                setBorderControlQuestion()
+            }, 2000)
         }
 
     }
 
     fun checkBorderControlQuestions() {
+        userPressBcButtonColorGreen()
+
         if (bC.correctAnswer == userPressAnswer) {
 
+            Handler().postDelayed({
 
-            if (currentQuestionsIndexBc <= borderControlQuestions.listOfQuestionsBC.size) {
-                setLastChanceQuestion()
-            }
+
+                if (currentQuestionsIndexBc <= borderControlQuestions.listOfQuestionsBC.size) {
+                    setLastChanceQuestion()
+                }
+            }, 2000)
 
 
         } else {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            userPressButtonColorRed()
+            Handler().postDelayed({
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }, 2000)
 
         }
 
     }
 
     fun checkLastChanceQuestions() {
+        userPressLcButtonColorGreen()
+
         if (lC.correctAnswer == userPressAnswer) {
-            currentQuestionIndex++
-            currentQuestionsIndexBc++
-            currenQuestionsIndexLc++
+            Handler().postDelayed({
+
+                currentQuestionIndex++
+                currentQuestionsIndexBc++
+                currenQuestionsIndexLc++
 
 
-            if (currenQuestionsIndexLc <= lastChanceQuestions.listOfQuestionslC.size) {
-                setQuestion()
+                if (currenQuestionsIndexLc <= lastChanceQuestions.listOfQuestionslC.size) {
+                    setQuestion()
 
-            }
+                }
+            }, 2000)
 
         } else {
-
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            userPressButtonColorRed()
+            Handler().postDelayed({
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }, 2000)
 
 
         }
     }
-
 
 
     fun questionType() {
@@ -206,11 +211,11 @@ class QuestionActivity : AppCompatActivity() {
         if (currentQuestionIndex == 4 && q.correctAnswer == userPressAnswer) {
             val finalintent = Intent(this, FinalPageActivity::class.java)
             startActivity(finalintent)
-        }else if (currentQuestionIndex == 4 && q.correctAnswer != userPressAnswer){
+        } else if (currentQuestionIndex == 4 && q.correctAnswer != userPressAnswer) {
             val mainintent = Intent(this, MainActivity::class.java)
             startActivity(mainintent)
 
-        }else if (isBorderQuestion == false && isLastChanceQuestions == false) {
+        } else if (isBorderQuestion == false && isLastChanceQuestions == false) {
             checkIfCorrectAnswer()
         } else if (isBorderQuestion == true && isLastChanceQuestions == false) {
             checkBorderControlQuestions()
@@ -221,20 +226,62 @@ class QuestionActivity : AppCompatActivity() {
         }
     }
 
-fun restoreButtonColor() {
-    userButton1.setBackgroundColor(Color.BLUE)
-    userButton2.setBackgroundColor(Color.BLUE)
-    userButton3.setBackgroundColor(Color.BLUE)
-    userButton4.setBackgroundColor(Color.BLUE)
+    fun restoreButtonColor() {
+        userButton1.setBackgroundColor(Color.BLUE)
+        userButton2.setBackgroundColor(Color.BLUE)
+        userButton3.setBackgroundColor(Color.BLUE)
+        userButton4.setBackgroundColor(Color.BLUE)
+    }
+
+    fun userPressButtonColorGreen() {
+        when (q.correctAnswer) {
+            1 -> userButton1.setBackgroundColor(Color.GREEN)
+            2 -> userButton2.setBackgroundColor(Color.GREEN)
+            3 -> userButton3.setBackgroundColor(Color.GREEN)
+            4 -> userButton4.setBackgroundColor(Color.GREEN)
+
+        }
+    }
+
+    fun userPressButtonColorRed() {
+        when (userPressAnswer) {
+            1 -> userButton1.setBackgroundColor(Color.RED)
+            2 -> userButton2.setBackgroundColor(Color.RED)
+            3 -> userButton3.setBackgroundColor(Color.RED)
+            4 -> userButton4.setBackgroundColor(Color.RED)
+
+        }
+
+
+    }
+
+    fun userPressBcButtonColorGreen() {
+        when (bC.correctAnswer) {
+            1 -> userButton1.setBackgroundColor(Color.GREEN)
+            2 -> userButton2.setBackgroundColor(Color.GREEN)
+            3 -> userButton3.setBackgroundColor(Color.GREEN)
+            4 -> userButton4.setBackgroundColor(Color.GREEN)
+
+        }
+
+    }
+
+    fun userPressLcButtonColorGreen() {
+        when (lC.correctAnswer) {
+            1 -> userButton1.setBackgroundColor(Color.GREEN)
+            2 -> userButton2.setBackgroundColor(Color.GREEN)
+            3 -> userButton3.setBackgroundColor(Color.GREEN)
+            4 -> userButton4.setBackgroundColor(Color.GREEN)
+
+        }
+    }
+
+
 }
 
 
 
 
 
-
-
-
-}
 
 
