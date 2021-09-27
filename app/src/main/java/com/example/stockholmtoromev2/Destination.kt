@@ -33,7 +33,7 @@ class QuestionsList() {
 
         val italy = Destination(        "Italy",
                                         R.drawable.italy_flag,
-                                        "What is the name of the Italian primeminister",
+                                        "What is the name of the Italian primeminister?",
                                         listOf("Giuseppe Conte","Paolo Gentiloni","Mario Draghi","Silvio Berlusconi"),
                                         3)
 
