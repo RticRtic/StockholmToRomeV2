@@ -12,6 +12,7 @@ class HangOutWithPopeActivity : AppCompatActivity() {
 
     lateinit var userSeeImageView: ImageView
     lateinit var userSeeTextView: TextView
+    lateinit var nextFactButton : Button
 
     var diffrentFacts = HangWithThePopeFactList()
     var currentFactIndex = 0
@@ -30,17 +31,16 @@ class HangOutWithPopeActivity : AppCompatActivity() {
 
         val playAgainButton = findViewById<Button>(R.id.playAgain_Button)
             playAgainButton.setOnClickListener {
+               userPressButton = 2
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
 
 
             }
-        val nextFactButton = findViewById<Button>(R.id.nextFact_Button)
+            nextFactButton = findViewById<Button>(R.id.nextFact_Button)
             nextFactButton.setOnClickListener {
                 userPressButton = 1
                 setNewFact()
-
-
             }
 
 
@@ -57,10 +57,15 @@ class HangOutWithPopeActivity : AppCompatActivity() {
     }
     fun setNewFact() {
         currentFactIndex++
-        if(currentFactIndex <= diffrentFacts.listOfFacts.size) {
+        if(currentFactIndex < diffrentFacts.listOfFacts.size) {
             setFacts()
+
+        } else {
+            nextFactButton.setText("We are out of facts press to exit game")
+            nextFactButton.setOnClickListener{
+                finishAffinity()
+            }
         }
+
     }
-
-
 }

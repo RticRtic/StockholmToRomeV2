@@ -10,12 +10,14 @@
     <ImageView
         android:id="@+id/userSeeImage_Iv"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="316dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="424dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/fontana_de_trevi" />
 
     <TextView
@@ -34,8 +36,10 @@
         android:layout_width="129dp"
         android:layout_height="131dp"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="114dp"
         android:backgroundTint="#274EBD"
         android:text="Next Fact"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toEndOf="@+id/playAgain_Button"
@@ -47,8 +51,10 @@
         android:layout_height="131dp"
         android:layout_marginStart="80dp"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="114dp"
         android:backgroundTint="#274EBD"
         android:text="PLay Again"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userSeeText_Tv" />
 </androidx.constraintlayout.widget.ConstraintLayout>
