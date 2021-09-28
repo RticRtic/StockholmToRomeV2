@@ -4,6 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#70B8B8"
     tools:context=".UserMadeItToPageActivity">
 
+    <ImageView
+        android:id="@+id/youLostImageView"
+        android:layout_width="300dp"
+        android:layout_height="227dp"
+        app:layout_constraintBottom_toTopOf="@+id/youLostTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.653"
+        app:srcCompat="@drawable/denmarkflag" />
+
+    <TextView
+        android:id="@+id/youLostTextView"
+        android:layout_width="209dp"
+        android:layout_height="118dp"
+        android:layout_marginBottom="288dp"
+        android:gravity="center"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/youLostButton"
+        android:layout_width="186dp"
+        android:layout_height="97dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/youLostTextView"
+        app:layout_constraintVertical_bias="0.303" />
 </androidx.constraintlayout.widget.ConstraintLayout>
