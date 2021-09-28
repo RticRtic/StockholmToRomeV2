@@ -172,13 +172,7 @@ class QuestionActivity : AppCompatActivity() {
 
 
         } else {
-            userPressButtonColorRed()
-            Handler().postDelayed({
-                val intent = Intent(this, UserMadeItToPageActivity::class.java)
-                mediaPlayer?.stop()
-                intent.putExtra("index",currentQuestionsIndexBc)
-                startActivity(intent)
-            }, 2000)
+            startYoulostPage()
 
         }
 
@@ -202,14 +196,7 @@ class QuestionActivity : AppCompatActivity() {
             }, 2000)
 
         } else {
-            userPressButtonColorRed()
-            Handler().postDelayed({
-                val intent = Intent(this,UserMadeItToPageActivity::class.java)
-                mediaPlayer?.stop()
-                startActivity(intent)
-            }, 2000)
-
-
+            startYoulostPage()
         }
     }
 
@@ -291,6 +278,16 @@ class QuestionActivity : AppCompatActivity() {
         mediaPlayer?.setOnPreparedListener {
             mediaPlayer?.start()
         }
+    }
+
+    fun startYoulostPage(){
+        userPressButtonColorRed()
+        Handler().postDelayed({
+            val intent = Intent(this, UserMadeItToPageActivity::class.java)
+            mediaPlayer?.stop()
+            intent.putExtra("index",currentQuestionIndex)
+            startActivity(intent)
+        }, 2000)
     }
 
 }
