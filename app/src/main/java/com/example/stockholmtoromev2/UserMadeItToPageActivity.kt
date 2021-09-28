@@ -1,6 +1,7 @@
 package com.example.stockholmtoromev2
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -23,6 +24,8 @@ class UserMadeItToPageActivity : AppCompatActivity() {
         userSeeTextView = findViewById(R.id.youLostTextView)
 
         val button = findViewById<Button>(R.id.youLostButton)
+        button.setBackgroundColor(Color.BLUE)
+
         button.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

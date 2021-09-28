@@ -79,6 +79,7 @@ class QuestionActivity : AppCompatActivity() {
         }
 
         setQuestion()
+        
 
 
     }
