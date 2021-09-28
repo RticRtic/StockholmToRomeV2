@@ -126,6 +126,8 @@ class QuestionActivity : AppCompatActivity() {
         userButton4.setText(lC.answer[3])
     }
 
+
+
     fun checkIfCorrectAnswer() {
 
         userPressButtonColorGreen()
@@ -201,7 +203,7 @@ class QuestionActivity : AppCompatActivity() {
         } else {
             userPressButtonColorRed()
             Handler().postDelayed({
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this,MainActivity::class.java)
                 mediaPlayer?.stop()
                 startActivity(intent)
             }, 2000)
