@@ -174,8 +174,9 @@ class QuestionActivity : AppCompatActivity() {
         } else {
             userPressButtonColorRed()
             Handler().postDelayed({
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, UserMadeItToPageActivity::class.java)
                 mediaPlayer?.stop()
+                intent.putExtra("index",currentQuestionsIndexBc)
                 startActivity(intent)
             }, 2000)
 
@@ -203,7 +204,7 @@ class QuestionActivity : AppCompatActivity() {
         } else {
             userPressButtonColorRed()
             Handler().postDelayed({
-                val intent = Intent(this,MainActivity::class.java)
+                val intent = Intent(this,UserMadeItToPageActivity::class.java)
                 mediaPlayer?.stop()
                 startActivity(intent)
             }, 2000)
@@ -287,7 +288,7 @@ class QuestionActivity : AppCompatActivity() {
     }
     fun startMedia() {
         mediaPlayer = MediaPlayer.create(this, R.raw.backgroundmusic)
-        mediaPlayer?.setOnPreparedListener() {
+        mediaPlayer?.setOnPreparedListener {
             mediaPlayer?.start()
         }
     }
