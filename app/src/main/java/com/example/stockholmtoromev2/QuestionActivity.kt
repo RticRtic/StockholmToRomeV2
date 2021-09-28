@@ -129,11 +129,11 @@ class QuestionActivity : AppCompatActivity() {
 
 
     fun checkIfCorrectAnswer() {
-
         userPressButtonColorGreen()
 
         if (q.correctAnswer == userPressAnswer) {
-
+            // Disabla knappar här
+                disableButtons()
             Handler().postDelayed({
 
                 currentQuestionIndex++
@@ -143,15 +143,18 @@ class QuestionActivity : AppCompatActivity() {
                 if (currentQuestionIndex <= diffrentQuestions.listOfQuestions.size) {
 
                     setQuestion()
+                    // Connecta knappar
+                    enableButtons()
                 }
             }, 2000)
 
 
         } else {
             userPressButtonColorRed()
-
+            disableButtons()
             Handler().postDelayed({
                 setBorderControlQuestion()
+                enableButtons()
             }, 2000)
         }
 
@@ -161,19 +164,23 @@ class QuestionActivity : AppCompatActivity() {
         userPressBcButtonColorGreen()
 
         if (bC.correctAnswer == userPressAnswer) {
-
+            disableButtons()
             Handler().postDelayed({
 
 
                 if (currentQuestionsIndexBc <= borderControlQuestions.listOfQuestionsBC.size) {
                     setLastChanceQuestion()
+                    enableButtons()
                 }
             }, 2000)
 
 
         } else {
-            startYoulostPage()
-
+            userPressButtonColorRed()
+            disableButtons()
+            Handler().postDelayed({
+                startYoulostPage()
+            },500)
         }
 
     }
@@ -182,6 +189,7 @@ class QuestionActivity : AppCompatActivity() {
         userPressLcButtonColorGreen()
 
         if (lC.correctAnswer == userPressAnswer) {
+            disableButtons()
             Handler().postDelayed({
 
                 currentQuestionIndex++
@@ -191,12 +199,17 @@ class QuestionActivity : AppCompatActivity() {
 
                 if (currenQuestionsIndexLc <= lastChanceQuestions.listOfQuestionslC.size) {
                     setQuestion()
+                    enableButtons()
 
                 }
             }, 2000)
 
         } else {
-            startYoulostPage()
+            userPressButtonColorRed()
+            disableButtons()
+            Handler().postDelayed({
+                startYoulostPage()
+            },500)
         }
     }
 
@@ -241,17 +254,7 @@ class QuestionActivity : AppCompatActivity() {
         }
     }
 
-    fun userPressButtonColorRed() {
-        when (userPressAnswer) {
-            1 -> userButton1.setBackgroundColor(Color.RED)
-            2 -> userButton2.setBackgroundColor(Color.RED)
-            3 -> userButton3.setBackgroundColor(Color.RED)
-            4 -> userButton4.setBackgroundColor(Color.RED)
 
-        }
-
-
-    }
 
     fun userPressBcButtonColorGreen() {
         when (bC.correctAnswer) {
@@ -259,6 +262,16 @@ class QuestionActivity : AppCompatActivity() {
             2 -> userButton2.setBackgroundColor(Color.GREEN)
             3 -> userButton3.setBackgroundColor(Color.GREEN)
             4 -> userButton4.setBackgroundColor(Color.GREEN)
+
+        }
+
+    }
+    fun userPressButtonColorRed() {
+        when (userPressAnswer) {
+            1 -> userButton1.setBackgroundColor(Color.RED)
+            2 -> userButton2.setBackgroundColor(Color.RED)
+            3 -> userButton3.setBackgroundColor(Color.RED)
+            4 -> userButton4.setBackgroundColor(Color.RED)
 
         }
 
@@ -288,6 +301,22 @@ class QuestionActivity : AppCompatActivity() {
             intent.putExtra("index",currentQuestionIndex)
             startActivity(intent)
         }, 2000)
+    }
+
+
+    fun enableButtons() {
+        userButton1.isEnabled = true
+        userButton2.isEnabled = true
+        userButton3.isEnabled = true
+        userButton4.isEnabled = true
+
+    }
+    fun disableButtons() {
+        userButton1.isEnabled = false
+        userButton2.isEnabled = false
+        userButton3.isEnabled = false
+        userButton4.isEnabled = false
+
     }
 
 }
