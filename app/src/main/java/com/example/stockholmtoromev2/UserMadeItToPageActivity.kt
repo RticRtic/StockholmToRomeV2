@@ -15,7 +15,7 @@ class UserMadeItToPageActivity : AppCompatActivity() {
     }
 
     var flaglist = QuestionsList()
-    var q: Destination = flaglist.listOfQuestions[0]
+    var f: Destination = flaglist.listOfQuestions[0]
 
 
 
