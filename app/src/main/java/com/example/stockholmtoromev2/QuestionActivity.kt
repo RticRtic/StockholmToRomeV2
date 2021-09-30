@@ -218,14 +218,18 @@ class QuestionActivity : AppCompatActivity() {
     fun questionType() {
 
         if (currentQuestionIndex == 4 && q.correctAnswer == userPressAnswer) {
-            val finalintent = Intent(this, FinalPageActivity::class.java)
-            mediaPlayer?.stop()
-            startActivity(finalintent)
+            userPressButtonColorGreen()
+            disableButtons()
+            Handler().postDelayed({
+                val finalintent = Intent(this, FinalPageActivity::class.java)
+                mediaPlayer?.stop()
+                startActivity(finalintent)
+            },2000)
 
         } else if (currentQuestionIndex == 4 && q.correctAnswer != userPressAnswer) {
-            val mainintent = Intent(this, MainActivity::class.java)
             mediaPlayer?.stop()
-            startActivity(mainintent)
+            startYoulostPage()
+            disableButtons()
 
         } else if (isBorderQuestion == false && isLastChanceQuestions == false) {
             checkIfCorrectAnswer()
