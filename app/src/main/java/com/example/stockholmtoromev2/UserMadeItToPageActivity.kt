@@ -40,7 +40,12 @@ class UserMadeItToPageActivity : AppCompatActivity() {
         val flagView = intent.getIntExtra("index",0)
         f = flaglist.listOfQuestions[flagView]
         userSeeFlagView.setImageResource(f.image)
-        userSeeTextView.setText("You made it to ${f.country}")
+        userSeeTextView.setText("Your journey ends here. You didin't make it in to Rome.")
+
+
+
+
+
 
     }
 
