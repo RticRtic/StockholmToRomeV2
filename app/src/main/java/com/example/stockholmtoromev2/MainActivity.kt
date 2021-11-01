@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var userSeeGameNameView: TextView
     lateinit var userSeeImageView: ImageView
     lateinit var userSeeWelcomeTextView: TextView
+    lateinit var usernameTextView: TextView
 
 
 
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         userSeeGameNameView = findViewById(R.id.userSeeGameNameTv)
         userSeeImageView = findViewById(R.id.stockholm_picture)
         userSeeWelcomeTextView = findViewById(R.id.questionTv)
+        userSeeWelcomeTextView = findViewById(R.id.usernameTextView)
 
         userSeeWelcomeTextView.text = "In this travelquiz you’re going from Stockholm to Rome. " +
                                       "On each stop on the way to Rome there will be a specific question for that country."+
@@ -34,13 +36,18 @@ class MainActivity : AppCompatActivity() {
 
         val button = findViewById<Button>(R.id.startButton)
         button.setBackgroundColor(Color.BLUE)
+
         button.setOnClickListener {
+
             val intent = Intent(this, QuestionActivity::class.java)
-                startActivity(intent)
+            intent.putExtra("username", usernameTextView.text)
+            startActivity(intent)
                 finish()
             }
         }
     }
+
+
 
 
 

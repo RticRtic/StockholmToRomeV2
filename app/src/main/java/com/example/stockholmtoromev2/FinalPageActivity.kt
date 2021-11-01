@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import com.example.stockholmtoromev2.highscore.HighScoreActivity
 
 class FinalPageActivity : AppCompatActivity() {
 
@@ -31,6 +32,15 @@ class FinalPageActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        val highscoreButton = findViewById<Button>(R.id.highscoreButton)
+        highscoreButton.setBackgroundColor(Color.BLUE)
+        highscoreButton.setOnClickListener {
+            val intent = Intent(this, HighScoreActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
 
 
 
