@@ -7,16 +7,29 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 import android.os.Handler
-import android.os.UserHandle
 
-import android.util.Log
-import android.view.View
 import android.widget.*
-import androidx.core.graphics.toColor
+import androidx.room.Insert
+import androidx.room.Query
+import com.example.stockholmtoromev2.database.AppDatabase
+import com.example.stockholmtoromev2.database.Qindex
+import com.example.stockholmtoromev2.database.QindexDao
+import kotlinx.coroutines.*
 import java.util.*
 import kotlin.concurrent.schedule
+import kotlin.coroutines.CoroutineContext
 
-class QuestionActivity : AppCompatActivity() {
+class QuestionActivity : AppCompatActivity(), CoroutineScope {
+
+
+    private lateinit var job : Job
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main + job
+
+    var currentIndexDatabase : Qindex? = null
+    lateinit var db : AppDatabase
+
+
 
     lateinit var userSeeFlagView: ImageView
     lateinit var userSeeQuestionView: TextView
@@ -24,6 +37,7 @@ class QuestionActivity : AppCompatActivity() {
     lateinit var userButton2: Button
     lateinit var userButton3: Button
     lateinit var userButton4: Button
+    lateinit var username: String
 
 
     var diffrentQuestions = QuestionsList()
@@ -49,6 +63,9 @@ class QuestionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
         userSeeFlagView = findViewById(R.id.flaglv)
+        job = Job()
+        db = AppDatabase.getInstance(this)
+        username = intent.getStringExtra("username").toString()
         userSeeQuestionView = findViewById(R.id.textView)
         startMedia()
 
@@ -140,6 +157,7 @@ class QuestionActivity : AppCompatActivity() {
                 currentQuestionIndex++
                 currentQuestionsIndexBc++
                 currenQuestionsIndexLc++
+                currentIndexDB()
 
                 if (currentQuestionIndex <= diffrentQuestions.listOfQuestions.size) {
 
@@ -196,6 +214,7 @@ class QuestionActivity : AppCompatActivity() {
                 currentQuestionIndex++
                 currentQuestionsIndexBc++
                 currenQuestionsIndexLc++
+                currentIndexDB()
 
 
                 if (currenQuestionsIndexLc <= lastChanceQuestions.listOfQuestionslC.size) {
@@ -216,6 +235,8 @@ class QuestionActivity : AppCompatActivity() {
 
 
     fun questionType() {
+
+        currentIndexDB()
 
         if (currentQuestionIndex == 4 && q.correctAnswer == userPressAnswer) {
             userPressButtonColorGreen()
@@ -324,7 +345,14 @@ class QuestionActivity : AppCompatActivity() {
 
     }
 
+    fun currentIndexDB(){
+        currentQuestionIndex = db.qindex.current
+        currentQuestionsIndexBc = db.qindex.border
+        currenQuestionsIndexLc = db.qindex.lastChance
+        username = db.qindex.name
+    }
 }
+
 
 
 
