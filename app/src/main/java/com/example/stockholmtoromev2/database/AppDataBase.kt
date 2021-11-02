@@ -8,7 +8,7 @@ import kotlinx.coroutines.internal.synchronized
 
 @Database(entities = arrayOf(Qindex::class), version = 1)
 abstract class AppDatabase : RoomDatabase() {
-    abstract val qindex : Qindex
+    abstract val qindexDao : QindexDao
 
     companion object {
 

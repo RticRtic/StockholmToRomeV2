@@ -17,3 +17,9 @@ interface QindexDao {
         @Query("SELECT * FROM qIndex_table")
         fun getAll() : List<Qindex>
 }
+
+
+/*@Query("SELECT * FROM word_table")
+fun getAll(): List<Word>
+
+ */

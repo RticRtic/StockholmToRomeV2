@@ -4,16 +4,42 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import com.example.stockholmtoromev2.database.AppDatabase
+import com.example.stockholmtoromev2.database.Qindex
 import com.example.stockholmtoromev2.highscore.HighScoreActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class FinalPageActivity : AppCompatActivity() {
+class FinalPageActivity : AppCompatActivity(), CoroutineScope {
+
+    val TAG = "!!!"
+
+    private lateinit var job: Job
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main + job
+
+    lateinit var db: AppDatabase
+    var GetUsername = ""
+
 
     lateinit var userSeeGameNameView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        job = Job()
+
+        db = AppDatabase.getInstance(this)
+
+        GetUsername = intent.getStringExtra("username").toString()
+        Log.d(TAG, "onCreate:1 $GetUsername")
+
         setContentView(R.layout.activity_final_page)
         userSeeGameNameView = findViewById(R.id.textView2)
 
@@ -41,8 +67,17 @@ class FinalPageActivity : AppCompatActivity() {
             finish()
         }
 
-
-
+        addIndex(Qindex(0,0,GetUsername))
+        Log.d(TAG, "onCreate:2 $GetUsername")
 
     }
+    fun addIndex(index: Qindex) {
+
+        launch(Dispatchers.IO) {
+            db.qindexDao.insert(index)
+
+        }
+    }
+
+
 }
