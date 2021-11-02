@@ -11,9 +11,11 @@
         <entry key="..\:/Users/jespe/AndroidStudioProjects/StockholmToRomeV2/app/src/main/res/layout/activity_user_made_it_to_page.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_final_page.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_hang_out_with_pope.xml" value="0.14361702127659576" />
+        <entry key="app/src/main/res/layout/activity_high_score.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2572463768115942" />
         <entry key="app/src/main/res/layout/activity_question.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_user_made_it_to_page.xml" value="0.21" />
+        <entry key="app/src/main/res/layout/highscore_item.xml" value="0.36711990111248455" />
       </map>
     </option>
   </component>
