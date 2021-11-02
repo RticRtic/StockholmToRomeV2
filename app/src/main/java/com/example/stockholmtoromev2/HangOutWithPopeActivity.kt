@@ -6,8 +6,14 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.stockholmtoromev2.database.AppDatabase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlin.coroutines.CoroutineContext
 
-class HangOutWithPopeActivity : AppCompatActivity() {
+class HangOutWithPopeActivity : AppCompatActivity(){
+
 
 
     lateinit var userSeeImageView: ImageView

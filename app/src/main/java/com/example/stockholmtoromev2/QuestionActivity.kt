@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 import android.os.Handler
+import android.util.Log
 
 import android.widget.*
 import androidx.room.Insert
@@ -26,10 +27,9 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.Main + job
 
-    var currentIndexDatabase : Qindex? = null
     lateinit var db : AppDatabase
 
-
+    val TAG = "!!!"
 
     lateinit var userSeeFlagView: ImageView
     lateinit var userSeeQuestionView: TextView
@@ -37,7 +37,6 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
     lateinit var userButton2: Button
     lateinit var userButton3: Button
     lateinit var userButton4: Button
-    lateinit var username: String
 
 
     var diffrentQuestions = QuestionsList()
@@ -50,6 +49,7 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
     var currenQuestionsIndexLc = 0
     var mediaPlayer: MediaPlayer? = null
 
+    var getUsername : String? = ""
 
     var isBorderQuestion = false
     var isLastChanceQuestions = false
@@ -65,10 +65,12 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
         userSeeFlagView = findViewById(R.id.flaglv)
         job = Job()
         db = AppDatabase.getInstance(this)
-        username = intent.getStringExtra("username").toString()
+
         userSeeQuestionView = findViewById(R.id.textView)
         startMedia()
 
+        getUsername = intent.getStringExtra("username")
+        Log.d(TAG, "onCreate:1 $getUsername")
 
         userButton1 = findViewById(R.id.button1)
         userButton1.setOnClickListener {
@@ -157,7 +159,7 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
                 currentQuestionIndex++
                 currentQuestionsIndexBc++
                 currenQuestionsIndexLc++
-                currentIndexDB()
+
 
                 if (currentQuestionIndex <= diffrentQuestions.listOfQuestions.size) {
 
@@ -214,7 +216,7 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
                 currentQuestionIndex++
                 currentQuestionsIndexBc++
                 currenQuestionsIndexLc++
-                currentIndexDB()
+
 
 
                 if (currenQuestionsIndexLc <= lastChanceQuestions.listOfQuestionslC.size) {
@@ -236,13 +238,15 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
 
     fun questionType() {
 
-        currentIndexDB()
+
 
         if (currentQuestionIndex == 4 && q.correctAnswer == userPressAnswer) {
             userPressButtonColorGreen()
             disableButtons()
             Handler().postDelayed({
                 val finalintent = Intent(this, FinalPageActivity::class.java)
+                finalintent.putExtra("username",getUsername)
+                Log.d(TAG, "questionType:2 $getUsername")
                 mediaPlayer?.stop()
                 startActivity(finalintent)
             },2000)
@@ -344,13 +348,15 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
         userButton4.isEnabled = false
 
     }
-
+/*
     fun currentIndexDB(){
         currentQuestionIndex = db.qindex.current
         currentQuestionsIndexBc = db.qindex.border
         currenQuestionsIndexLc = db.qindex.lastChance
         username = db.qindex.name
     }
+
+ */
 }
 
 

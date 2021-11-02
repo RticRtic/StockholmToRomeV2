@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 
 class MainActivity : AppCompatActivity() {
@@ -11,8 +12,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var userSeeGameNameView: TextView
     lateinit var userSeeImageView: ImageView
     lateinit var userSeeWelcomeTextView: TextView
-    lateinit var usernameTextView: TextView
+    lateinit var usernameTextView: EditText
 
+    val TAG = "!!!"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         userSeeGameNameView = findViewById(R.id.userSeeGameNameTv)
         userSeeImageView = findViewById(R.id.stockholm_picture)
         userSeeWelcomeTextView = findViewById(R.id.questionTv)
-        userSeeWelcomeTextView = findViewById(R.id.usernameTextView)
+        usernameTextView = findViewById(R.id.usernameTextView)
 
         userSeeWelcomeTextView.text = "In this travelquiz you’re going from Stockholm to Rome. " +
                                       "On each stop on the way to Rome there will be a specific question for that country."+
@@ -40,9 +42,12 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
 
             val intent = Intent(this, QuestionActivity::class.java)
-            intent.putExtra("username", usernameTextView.text)
+            val username = usernameTextView.text.toString()
+            intent.putExtra("username", username)
+
+            Log.d(TAG, "onCreate: $username")
             startActivity(intent)
-                finish()
+            finish()
             }
         }
     }
