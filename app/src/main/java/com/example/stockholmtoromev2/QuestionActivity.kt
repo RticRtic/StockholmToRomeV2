@@ -51,6 +51,7 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
 
     var getUsername : String? = ""
 
+
     var isBorderQuestion = false
     var isLastChanceQuestions = false
 
@@ -70,7 +71,10 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
         startMedia()
 
         getUsername = intent.getStringExtra("username")
-        Log.d(TAG, "onCreate:1 $getUsername")
+
+        Log.d(TAG, "onCreate:Questionactivity $getUsername")
+        Log.d(TAG, "onCreate:QuestionActivity IndexTracker: $currentQuestionIndex")
+
 
         userButton1 = findViewById(R.id.button1)
         userButton1.setOnClickListener {
@@ -115,7 +119,7 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
         userButton2.setText(q.answer[1])
         userButton3.setText(q.answer[2])
         userButton4.setText(q.answer[3])
-
+        
 
     }
 
@@ -157,6 +161,7 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
             Handler().postDelayed({
 
                 currentQuestionIndex++
+                Log.d(TAG, "checkIfCorrectAnswer IndexTracker: $currentQuestionIndex")
                 currentQuestionsIndexBc++
                 currenQuestionsIndexLc++
 
@@ -240,13 +245,19 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
 
 
 
-        if (currentQuestionIndex == 4 && q.correctAnswer == userPressAnswer) {
+        if (currentQuestionIndex == 4 && q.correctAnswer == userPressAnswer) { // kolla med Manne här
+            currentQuestionIndex++
             userPressButtonColorGreen()
             disableButtons()
             Handler().postDelayed({
                 val finalintent = Intent(this, FinalPageActivity::class.java)
+
                 finalintent.putExtra("username",getUsername)
-                Log.d(TAG, "questionType:2 $getUsername")
+                finalintent.putExtra("destinationIndexTracker",currentQuestionIndex)
+
+                Log.d(TAG, "questionType:QuestionActivity $getUsername")
+                Log.d(TAG, "questionType: QuestionActivity IndexTracker: $currentQuestionIndex")
+
                 mediaPlayer?.stop()
                 startActivity(finalintent)
             },2000)
