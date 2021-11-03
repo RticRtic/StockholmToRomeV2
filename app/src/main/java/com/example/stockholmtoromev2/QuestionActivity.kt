@@ -245,7 +245,7 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
 
 
 
-        if (currentQuestionIndex == 4 && q.correctAnswer == userPressAnswer) { // kolla med Manne här
+        if (currentQuestionIndex == 4 && q.correctAnswer == userPressAnswer) {
             currentQuestionIndex++
             userPressButtonColorGreen()
             disableButtons()
