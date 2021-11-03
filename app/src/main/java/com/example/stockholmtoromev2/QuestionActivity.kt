@@ -50,6 +50,8 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
     var mediaPlayer: MediaPlayer? = null
 
     var getUsername : String? = ""
+    var indexTracker: Int = 1
+
 
     var isBorderQuestion = false
     var isLastChanceQuestions = false
@@ -70,7 +72,11 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
         startMedia()
 
         getUsername = intent.getStringExtra("username")
-        Log.d(TAG, "onCreate:1 $getUsername")
+        indexTracker = intent.getIntExtra("destinationIndexTracker",indexTracker)
+
+        Log.d(TAG, "onCreate:Questionactivity $getUsername")
+        Log.d(TAG, "onCreate:QuestionActivity $indexTracker")
+
 
         userButton1 = findViewById(R.id.button1)
         userButton1.setOnClickListener {
@@ -245,8 +251,12 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
             disableButtons()
             Handler().postDelayed({
                 val finalintent = Intent(this, FinalPageActivity::class.java)
+
                 finalintent.putExtra("username",getUsername)
-                Log.d(TAG, "questionType:2 $getUsername")
+                finalintent.putExtra("destinationIndexTracker",currentQuestionIndex)
+                Log.d(TAG, "questionType:QuestionActivity $getUsername")
+                Log.d(TAG, "questionType: QuestionActivity $currentQuestionIndex")
+
                 mediaPlayer?.stop()
                 startActivity(finalintent)
             },2000)

@@ -25,20 +25,28 @@ class FinalPageActivity : AppCompatActivity(), CoroutineScope {
         get() = Dispatchers.Main + job
 
     lateinit var db: AppDatabase
-    var GetUsername = ""
+    var GetUsername: String = ""
+    var indexTracker: Int = 0
 
+    var diffrentQuestions = QuestionsList()
+    var currentQuestionIndex = 0
+    var q: Destination = diffrentQuestions.listOfQuestions[currentQuestionIndex]
 
     lateinit var userSeeGameNameView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
+        
 
         job = Job()
 
         db = AppDatabase.getInstance(this)
 
         GetUsername = intent.getStringExtra("username").toString()
-        Log.d(TAG, "onCreate:1 $GetUsername")
+        indexTracker = intent.getIntExtra("destinationIndexTracker",currentQuestionIndex)
+        Log.d(TAG, "onCreate:Finalpage $GetUsername")
+        Log.d(TAG, "onCreate: Finalpage $indexTracker")
 
         setContentView(R.layout.activity_final_page)
         userSeeGameNameView = findViewById(R.id.textView2)
@@ -67,8 +75,8 @@ class FinalPageActivity : AppCompatActivity(), CoroutineScope {
             finish()
         }
 
-        addIndex(Qindex(0,0,GetUsername))
-        Log.d(TAG, "onCreate:2 $GetUsername")
+        addIndex(Qindex(0,indexTracker,GetUsername))
+        Log.d(TAG, "onCreate:Finalpage $GetUsername")
 
     }
     fun addIndex(index: Qindex) {

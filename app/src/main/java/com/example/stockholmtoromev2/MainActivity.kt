@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var userSeeImageView: ImageView
     lateinit var userSeeWelcomeTextView: TextView
     lateinit var usernameTextView: EditText
+    var indexTracker = 1
 
     val TAG = "!!!"
 
@@ -44,8 +45,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, QuestionActivity::class.java)
             val username = usernameTextView.text.toString()
             intent.putExtra("username", username)
+            intent.putExtra("destinationIndexTracker",indexTracker)
 
-            Log.d(TAG, "onCreate: $username")
+            Log.d(TAG, "onCreate:Main $indexTracker")
+
+            Log.d(TAG, "onCreate:Main $username")
             startActivity(intent)
             finish()
             }
