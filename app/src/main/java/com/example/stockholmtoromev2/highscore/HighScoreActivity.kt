@@ -19,8 +19,11 @@ class HighScoreActivity : AppCompatActivity(), CoroutineScope {
     lateinit var db: AppDatabase
     lateinit var where: String
 
-    var players= mutableListOf<HiScore>(HiScore("Manne", "Denmark"),
-    HiScore("Torsten", "Rome"))
+
+    var players = mutableListOf<HiScore>(
+        HiScore("Manne", "Denmark"),
+        HiScore("Torsten", "Rome")
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,13 +33,10 @@ class HighScoreActivity : AppCompatActivity(), CoroutineScope {
         db = AppDatabase.getInstance(this)
 
 
-
-
-       val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         val adapter = HighScoreRecyclerView(this, players)
         recyclerView.adapter = adapter
 
     }
-
 }
