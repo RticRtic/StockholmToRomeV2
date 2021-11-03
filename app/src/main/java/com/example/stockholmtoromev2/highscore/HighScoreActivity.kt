@@ -30,18 +30,7 @@ class HighScoreActivity : AppCompatActivity(), CoroutineScope {
         db = AppDatabase.getInstance(this)
 
 
-/*
-        var name = db.qindex.name
-        when{
-            db.qindex.currentIndex == 0 -> where = "Missed the train"
-            db.qindex.currentIndex == 1 -> where = "Denmark"
-            db.qindex.currentIndex == 2 -> where = "Germany"
-            db.qindex.currentIndex == 3 -> where = "Switzerland"
-            db.qindex.currentIndex == 4 -> where = "Italy"
-            db.qindex.currentIndex >= 5 -> where = "Rome"
-        }
-*/
-        //  users.add(HiScore(name, where))
+
 
        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -49,14 +38,5 @@ class HighScoreActivity : AppCompatActivity(), CoroutineScope {
         recyclerView.adapter = adapter
 
     }
-/*
-    fun addIndex(index: Qindex) {
 
-        launch(Dispatchers.IO) {
-            db.qindexDao.insert(index)
-
-        }
-    }
-
- */
 }
