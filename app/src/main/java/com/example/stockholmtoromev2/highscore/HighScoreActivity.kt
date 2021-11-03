@@ -27,7 +27,7 @@ class HighScoreActivity : AppCompatActivity(), CoroutineScope {
     var indexTracker: Int = 0
     var currentQuestionIndex: Int = 0
 
-    var players= mutableListOf<HiScore>(HiScore(getUsername, "Denmark"),
+    var players= mutableListOf<HiScore>(HiScore(getUsername, where),
     HiScore("Torsten", "Rome"))
 
 
@@ -41,6 +41,15 @@ class HighScoreActivity : AppCompatActivity(), CoroutineScope {
 
         getUsername = intent.getStringExtra("username").toString()
         indexTracker = intent.getIntExtra("destinationIndexTracker",currentQuestionIndex)
+
+        when{
+            currentQuestionIndex == 0 -> where = "Got stuck in the borders!"
+            currentQuestionIndex == 1 -> where = "Denmark"
+            currentQuestionIndex == 2 -> where = "Germany"
+            currentQuestionIndex == 3 -> where = "Switzerland"
+            currentQuestionIndex == 4 -> where = "Italy"
+            currentQuestionIndex == 5 -> where = "Made it to Rome!"
+        }
 
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
