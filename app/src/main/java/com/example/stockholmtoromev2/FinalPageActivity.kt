@@ -25,7 +25,7 @@ class FinalPageActivity : AppCompatActivity(), CoroutineScope {
         get() = Dispatchers.Main + job
 
     lateinit var db: AppDatabase
-    var GetUsername: String = ""
+    var getUsername: String = ""
     var indexTracker: Int = 0
     var currentQuestionIndex = 0
 
@@ -41,9 +41,9 @@ class FinalPageActivity : AppCompatActivity(), CoroutineScope {
 
         db = AppDatabase.getInstance(this)
 
-        GetUsername = intent.getStringExtra("username").toString()
+        getUsername = intent.getStringExtra("username").toString()
         indexTracker = intent.getIntExtra("destinationIndexTracker",currentQuestionIndex)
-        Log.d(TAG, "onCreate:Finalpage $GetUsername")
+        Log.d(TAG, "onCreate:Finalpage $getUsername")
         Log.d(TAG, "onCreate: Finalpage $indexTracker")
 
         setContentView(R.layout.activity_final_page)
@@ -69,21 +69,16 @@ class FinalPageActivity : AppCompatActivity(), CoroutineScope {
         highscoreButton.setBackgroundColor(Color.BLUE)
         highscoreButton.setOnClickListener {
             val intent = Intent(this, HighScoreActivity::class.java)
+            intent.putExtra("username",getUsername)
+            intent.putExtra("destinationIndexTracker",indexTracker)
             startActivity(intent)
             finish()
         }
 
-        addIndex(Qindex(0,indexTracker,GetUsername))
-        Log.d(TAG, "onCreate:Finalpage $GetUsername")
+
 
     }
-    fun addIndex(index: Qindex) {
 
-        launch(Dispatchers.IO) {
-            db.qindexDao.insert(index)
-
-        }
-    }
 
 
 }
