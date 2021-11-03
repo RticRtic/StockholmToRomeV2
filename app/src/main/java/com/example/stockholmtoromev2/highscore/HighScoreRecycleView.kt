@@ -33,7 +33,6 @@ class HighScoreRecycleView(val context: Context, var where: List<HiScore>) :
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        //När en viewholder skapas letar vi reda på tvp textviews som finns inne i vår itemview
         val nameTextView = itemView.findViewById<TextView>(R.id.usernameEditText)
         val whereTextView = itemView.findViewById<TextView>(R.id.whereTextView)
 
