@@ -50,7 +50,6 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
     var mediaPlayer: MediaPlayer? = null
 
     var getUsername : String? = ""
-    var indexTracker: Int = 1
 
 
     var isBorderQuestion = false
@@ -72,10 +71,9 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
         startMedia()
 
         getUsername = intent.getStringExtra("username")
-        indexTracker = intent.getIntExtra("destinationIndexTracker",indexTracker)
 
         Log.d(TAG, "onCreate:Questionactivity $getUsername")
-        Log.d(TAG, "onCreate:QuestionActivity $indexTracker")
+        Log.d(TAG, "onCreate:QuestionActivity IndexTracker: $currentQuestionIndex")
 
 
         userButton1 = findViewById(R.id.button1)
@@ -121,7 +119,7 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
         userButton2.setText(q.answer[1])
         userButton3.setText(q.answer[2])
         userButton4.setText(q.answer[3])
-
+        
 
     }
 
@@ -163,6 +161,7 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
             Handler().postDelayed({
 
                 currentQuestionIndex++
+                Log.d(TAG, "checkIfCorrectAnswer IndexTracker: $currentQuestionIndex")
                 currentQuestionsIndexBc++
                 currenQuestionsIndexLc++
 
@@ -246,7 +245,8 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
 
 
 
-        if (currentQuestionIndex == 4 && q.correctAnswer == userPressAnswer) {
+        if (currentQuestionIndex == 4 && q.correctAnswer == userPressAnswer) { // kolla med Manne här
+            currentQuestionIndex++
             userPressButtonColorGreen()
             disableButtons()
             Handler().postDelayed({
@@ -254,8 +254,9 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
 
                 finalintent.putExtra("username",getUsername)
                 finalintent.putExtra("destinationIndexTracker",currentQuestionIndex)
+
                 Log.d(TAG, "questionType:QuestionActivity $getUsername")
-                Log.d(TAG, "questionType: QuestionActivity $currentQuestionIndex")
+                Log.d(TAG, "questionType: QuestionActivity IndexTracker: $currentQuestionIndex")
 
                 mediaPlayer?.stop()
                 startActivity(finalintent)

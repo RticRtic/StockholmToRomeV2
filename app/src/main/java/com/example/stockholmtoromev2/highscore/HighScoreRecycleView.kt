@@ -1,7 +1,6 @@
 package com.example.stockholmtoromev2.highscore
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,7 +34,7 @@ class HighScoreRecycleView(val context: Context, var where: List<HiScore>) :
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         //När en viewholder skapas letar vi reda på tvp textviews som finns inne i vår itemview
-        val nameTextView = itemView.findViewById<TextView>(R.id.usernameTextView)
+        val nameTextView = itemView.findViewById<TextView>(R.id.usernameEditText)
         val whereTextView = itemView.findViewById<TextView>(R.id.whereTextView)
 
 

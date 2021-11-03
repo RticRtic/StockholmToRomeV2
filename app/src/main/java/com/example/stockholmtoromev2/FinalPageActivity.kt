@@ -27,10 +27,8 @@ class FinalPageActivity : AppCompatActivity(), CoroutineScope {
     lateinit var db: AppDatabase
     var GetUsername: String = ""
     var indexTracker: Int = 0
-
-    var diffrentQuestions = QuestionsList()
     var currentQuestionIndex = 0
-    var q: Destination = diffrentQuestions.listOfQuestions[currentQuestionIndex]
+
 
     lateinit var userSeeGameNameView: TextView
 

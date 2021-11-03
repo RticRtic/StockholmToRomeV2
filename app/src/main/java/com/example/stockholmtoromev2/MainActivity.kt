@@ -12,8 +12,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var userSeeGameNameView: TextView
     lateinit var userSeeImageView: ImageView
     lateinit var userSeeWelcomeTextView: TextView
-    lateinit var usernameTextView: EditText
-    var indexTracker = 1
+    lateinit var usernameEditTextView: EditText
+    var indexTracker = 0
 
     val TAG = "!!!"
 
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         userSeeGameNameView = findViewById(R.id.userSeeGameNameTv)
         userSeeImageView = findViewById(R.id.stockholm_picture)
         userSeeWelcomeTextView = findViewById(R.id.questionTv)
-        usernameTextView = findViewById(R.id.usernameTextView)
+        usernameEditTextView = findViewById(R.id.usernameEditText)
 
         userSeeWelcomeTextView.text = "In this travelquiz you’re going from Stockholm to Rome. " +
                                       "On each stop on the way to Rome there will be a specific question for that country."+
@@ -43,11 +43,10 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
 
             val intent = Intent(this, QuestionActivity::class.java)
-            val username = usernameTextView.text.toString()
+            val username = usernameEditTextView.text.toString()
             intent.putExtra("username", username)
-            intent.putExtra("destinationIndexTracker",indexTracker)
 
-            Log.d(TAG, "onCreate:Main $indexTracker")
+            Log.d(TAG, "onCreate:Main IndexTracker: $indexTracker")
 
             Log.d(TAG, "onCreate:Main $username")
             startActivity(intent)
