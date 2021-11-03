@@ -20,14 +20,16 @@ class HighScoreActivity : AppCompatActivity(), CoroutineScope {
     lateinit var db: AppDatabase
     lateinit var where: String
 
+
     val TAG = "!!!"
 
     var getUsername: String = ""
     var indexTracker: Int = 0
     var currentQuestionIndex: Int = 0
 
-    var players= mutableListOf<HiScore>(HiScore(getUsername, "Denmark"),
+    var players= mutableListOf<HiScore>(HiScore(getUsername, where),
     HiScore("Torsten", "Rome"))
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,11 +38,21 @@ class HighScoreActivity : AppCompatActivity(), CoroutineScope {
         job = Job()
         db = AppDatabase.getInstance(this)
 
+
         getUsername = intent.getStringExtra("username").toString()
         indexTracker = intent.getIntExtra("destinationIndexTracker",currentQuestionIndex)
 
+        when{
+            currentQuestionIndex == 0 -> where = "Got stuck in the borders!"
+            currentQuestionIndex == 1 -> where = "Denmark"
+            currentQuestionIndex == 2 -> where = "Germany"
+            currentQuestionIndex == 3 -> where = "Switzerland"
+            currentQuestionIndex == 4 -> where = "Italy"
+            currentQuestionIndex == 5 -> where = "Made it to Rome!"
+        }
 
-       val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         val adapter = HighScoreRecyclerView(this, players)
         recyclerView.adapter = adapter
@@ -57,5 +69,4 @@ class HighScoreActivity : AppCompatActivity(), CoroutineScope {
 
         }
     }
-
 }
