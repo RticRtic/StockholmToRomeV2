@@ -37,8 +37,23 @@
         android:text="play again"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.133"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/youLostTextView"
-        app:layout_constraintVertical_bias="0.303" />
+        app:layout_constraintVertical_bias="0.287" />
+
+    <Button
+        android:id="@+id/hiScoreButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginEnd="59dp"
+        android:layout_marginBottom="163dp"
+        android:text="HiScore"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/youLostButton"
+        app:layout_constraintTop_toBottomOf="@+id/youLostTextView"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

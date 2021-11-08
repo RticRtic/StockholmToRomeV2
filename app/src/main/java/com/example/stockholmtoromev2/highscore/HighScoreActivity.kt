@@ -19,16 +19,24 @@ class HighScoreActivity : AppCompatActivity(), CoroutineScope {
 
     lateinit var db: AppDatabase
     lateinit var where: String
+    lateinit var recyclerView: RecyclerView
 
 
     val TAG = "!!!"
 
     var getUsername: String = ""
-    var indexTracker: Int = 0
-    var currentQuestionIndex: Int = 0
+    var indexTrackerDestination: Int = 0
+    var indexTrackerBorderControll: Int = 0
+    var indexTrackerLastChanceControll: Int = 0
 
-    var players= mutableListOf<HiScore>(HiScore(getUsername, where),
-    HiScore("Torsten", "Rome"))
+
+    var currentQuestionIndex: Int = 0
+    var currentQuestionsIndexBc: Int = 0
+    var currentQuestionIndexLc: Int = 0
+
+
+    var players = mutableListOf<Qindex>()
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,26 +48,43 @@ class HighScoreActivity : AppCompatActivity(), CoroutineScope {
 
 
         getUsername = intent.getStringExtra("username").toString()
-        indexTracker = intent.getIntExtra("destinationIndexTracker",currentQuestionIndex)
+        indexTrackerDestination = intent.getIntExtra("destinationIndexControllTracker",currentQuestionIndex)
+        indexTrackerBorderControll = intent.getIntExtra("borderControllIndexControllTracker",currentQuestionsIndexBc)
+        indexTrackerLastChanceControll = intent.getIntExtra("lastChanceIndexControllTracker",currentQuestionIndexLc)
+
+        Log.d(TAG, "onCreate: indexTrackerDestination: $indexTrackerDestination")
+        Log.d(TAG, "onCreate: indexTrackerLastChance: $indexTrackerLastChanceControll")
+        Log.d(TAG, "onCreate: indexTrackerBorderControll: $indexTrackerBorderControll")
 
         when{
-            currentQuestionIndex == 0 -> where = "Got stuck in the borders!"
-            currentQuestionIndex == 1 -> where = "Denmark"
-            currentQuestionIndex == 2 -> where = "Germany"
-            currentQuestionIndex == 3 -> where = "Switzerland"
-            currentQuestionIndex == 4 -> where = "Italy"
-            currentQuestionIndex == 5 -> where = "Made it to Rome!"
+
+            indexTrackerDestination == 5 -> where = "Made it to Rome"
+
+        }
+        when{
+            indexTrackerBorderControll == 0 -> where = "Made it to Denmark"
+            indexTrackerBorderControll == 1 -> where = "Made it to Germany"
+            indexTrackerBorderControll == 2 -> where = "Made it to Switzerland"
+            indexTrackerBorderControll == 3 -> where = "Made it to Italy"
+        }
+        when{
+            indexTrackerLastChanceControll == 0 -> where = "Made it to Denmark"
+            indexTrackerLastChanceControll == 1 -> where = "Made it to Germany"
+            indexTrackerLastChanceControll == 2 -> where = "Made it to Switzerland"
+            indexTrackerLastChanceControll == 3 -> where = "Made it to Italy"
         }
 
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+
+        recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         val adapter = HighScoreRecyclerView(this, players)
         recyclerView.adapter = adapter
 
-        addIndex(Qindex(0,indexTracker,getUsername))
-        Log.d(TAG, "onCreate:HighScoreActivity $getUsername")
-        Log.d(TAG, "onCreate: HighScoreActivity $indexTracker")
+        addIndex(Qindex(0,getUsername,where))
+       
+
+        loadAllPlayers()
 
     }
     fun addIndex(index: Qindex) {
@@ -69,4 +94,18 @@ class HighScoreActivity : AppCompatActivity(), CoroutineScope {
 
         }
     }
+    fun loadAllPlayers() {
+        val gamers = async(Dispatchers.IO) {
+            db.qindexDao.getAll()
+
+        }
+        launch {
+            val list = gamers.await().toMutableList()
+            players.addAll(list)
+
+            recyclerView.adapter?.notifyDataSetChanged()
+
+        }
+    }
+
 }
