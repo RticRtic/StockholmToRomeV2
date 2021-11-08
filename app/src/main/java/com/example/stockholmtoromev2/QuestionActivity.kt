@@ -192,9 +192,11 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
         if (bC.correctAnswer == userPressAnswer) {
             disableButtons()
             Handler().postDelayed({
+                Log.d(TAG, "checkBorderControllQuestion IndexTracker: $currentQuestionsIndexBc")
 
 
                 if (currentQuestionsIndexBc <= borderControlQuestions.listOfQuestionsBC.size) {
+
                     setLastChanceQuestion()
                     enableButtons()
                 }
@@ -221,7 +223,7 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
                 currentQuestionIndex++
                 currentQuestionsIndexBc++
                 currenQuestionsIndexLc++
-
+                Log.d(TAG, "CheckLastChance IndexTracker: $currenQuestionsIndexLc")
 
 
                 if (currenQuestionsIndexLc <= lastChanceQuestions.listOfQuestionslC.size) {
@@ -253,9 +255,11 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
                 val finalintent = Intent(this, FinalPageActivity::class.java)
 
                 finalintent.putExtra("username",getUsername)
-                finalintent.putExtra("destinationIndexTracker",currentQuestionIndex)
+                finalintent.putExtra("destinationIndexControllTracker",currentQuestionIndex)
+                finalintent.putExtra("borderControllIndexControllTracker",currentQuestionsIndexBc)
+                finalintent.putExtra("lastChanceIndexControllTracker",currenQuestionsIndexLc)
 
-                Log.d(TAG, "questionType:QuestionActivity $getUsername")
+               // Log(TAG, "questionType:QuestionActivity $getUsername")
                 Log.d(TAG, "questionType: QuestionActivity IndexTracker: $currentQuestionIndex")
 
                 mediaPlayer?.stop()
@@ -263,6 +267,7 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
             },2000)
 
         } else if (currentQuestionIndex == 4 && q.correctAnswer != userPressAnswer) {
+          //  currentQuestionIndex++ // Kanske behöver ta bort denna?
             mediaPlayer?.stop()
             startYoulostPage()
             disableButtons()
@@ -338,8 +343,13 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
         userPressButtonColorRed()
         Handler().postDelayed({
             val intent = Intent(this, UserMadeItToPageActivity::class.java)
-            mediaPlayer?.stop()
+            intent.putExtra("destinationIndexControllTracker", currentQuestionIndex)
+            intent.putExtra("borderControllIndexControllTracker",currentQuestionsIndexBc)
+            intent.putExtra("lastChanceIndexControllTracker",currenQuestionsIndexLc)
+
             intent.putExtra("index",currentQuestionIndex)
+            intent.putExtra("username",getUsername)
+            mediaPlayer?.stop()
             startActivity(intent)
         }, 2000)
     }
@@ -359,15 +369,7 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
         userButton4.isEnabled = false
 
     }
-/*
-    fun currentIndexDB(){
-        currentQuestionIndex = db.qindex.current
-        currentQuestionsIndexBc = db.qindex.border
-        currenQuestionsIndexLc = db.qindex.lastChance
-        username = db.qindex.name
-    }
 
- */
 }
 
 

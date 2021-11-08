@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import kotlinx.coroutines.internal.synchronized
 
-@Database(entities = arrayOf(Qindex::class), version = 1)
+@Database(entities = arrayOf(Qindex::class), version = 7)
 abstract class AppDatabase : RoomDatabase() {
     abstract val qindexDao : QindexDao
 

@@ -26,9 +26,14 @@ class FinalPageActivity : AppCompatActivity(), CoroutineScope {
 
     lateinit var db: AppDatabase
     var getUsername: String = ""
-    var indexTracker: Int = 0
-    var currentQuestionIndex = 0
+    var indexTrackerDestination: Int = 0
+    var indexTrackerBorderControll: Int = 0
+    var indexTrackerLastChance: Int = 0
 
+
+    var currentQuestionIndex = 0
+    var currentQuestionsIndexBc = 0
+    var currentQuestionIndexLc = 0
 
     lateinit var userSeeGameNameView: TextView
 
@@ -42,9 +47,15 @@ class FinalPageActivity : AppCompatActivity(), CoroutineScope {
         db = AppDatabase.getInstance(this)
 
         getUsername = intent.getStringExtra("username").toString()
-        indexTracker = intent.getIntExtra("destinationIndexTracker",currentQuestionIndex)
+        indexTrackerDestination = intent.getIntExtra("destinationIndexControllTracker",currentQuestionIndex)
+        indexTrackerBorderControll = intent.getIntExtra("borderControllIndexControllTracker",currentQuestionsIndexBc)
+        indexTrackerLastChance = intent.getIntExtra("lastChanceIndexControllTracker",currentQuestionIndexLc)
+
         Log.d(TAG, "onCreate:Finalpage $getUsername")
-        Log.d(TAG, "onCreate: Finalpage $indexTracker")
+        Log.d(TAG, "onCreate: Finalpage destinationIndexTracker: $indexTrackerDestination")
+        Log.d(TAG, "onCreate: Finalpage borderControllIndexTracker: $indexTrackerBorderControll")
+        Log.d(TAG, "onCreate: Finalpage lastChanceIndexGTracler: $indexTrackerLastChance")
+
 
         setContentView(R.layout.activity_final_page)
         userSeeGameNameView = findViewById(R.id.textView2)
@@ -70,7 +81,9 @@ class FinalPageActivity : AppCompatActivity(), CoroutineScope {
         highscoreButton.setOnClickListener {
             val intent = Intent(this, HighScoreActivity::class.java)
             intent.putExtra("username",getUsername)
-            intent.putExtra("destinationIndexTracker",indexTracker)
+            intent.putExtra("destinationIndexControllTracker",indexTrackerDestination)
+            intent.putExtra("borderControllIndexControllTracker",indexTrackerBorderControll)
+            intent.putExtra("lastChanceIndexControllTracker",indexTrackerLastChance)
             startActivity(intent)
             finish()
         }
